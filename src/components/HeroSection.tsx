@@ -1,9 +1,24 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Sparkles, Heart, Brain, Zap } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 import heroImage from "@/assets/hero-meditation.jpg";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+  const { user } = useAuth();
+
+  const handleStartJourney = () => {
+    if (user) {
+      // User is authenticated, proceed to questionnaire
+      // We'll implement this next
+      console.log('Start questionnaire');
+    } else {
+      // User not authenticated, redirect to auth
+      navigate('/auth');
+    }
+  };
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-peaceful">
       {/* Background Image with Overlay */}
@@ -65,6 +80,7 @@ const HeroSection = () => {
             <Button 
               size="lg" 
               className="bg-gradient-healing hover:shadow-healing animate-pulse-glow px-8 py-6 text-lg"
+              onClick={handleStartJourney}
             >
               <Sparkles className="w-5 h-5 mr-2" />
               Start Your Healing Journey
