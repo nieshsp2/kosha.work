@@ -45,7 +45,7 @@ const Navbar = () => {
             </Button>
             <Button className="bg-gradient-healing hover:shadow-healing">
               <Sparkles className="w-4 h-4 mr-2" />
-              Start Healing
+              Start Assessment
             </Button>
           </div>
 
@@ -86,7 +86,7 @@ const Navbar = () => {
                 </Button>
                 <Button className="w-full bg-gradient-healing">
                   <Sparkles className="w-4 h-4 mr-2" />
-                  Start Healing
+                  Start Assessment
                 </Button>
               </div>
             </div>
