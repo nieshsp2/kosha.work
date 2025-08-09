@@ -10,34 +10,73 @@ export type Database = {
   // Allows to automatically instanciate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "13.0.4"
+    PostgrestVersion: "12.2.12 (cd3cf9e)"
   }
   public: {
     Tables: {
-      profiles: {
+      hwr_scores: {
         Row: {
-          created_at: string
-          full_name: string | null
+          age: number | null
+          assessment_date: string | null
+          created_at: string | null
+          health_score: number
           id: string
-          phone_number: string | null
-          updated_at: string
-          user_id: string
+          relationship_score: number
+          total_score: number
+          user_id: string | null
+          wealth_score: number
         }
         Insert: {
-          created_at?: string
-          full_name?: string | null
+          age?: number | null
+          assessment_date?: string | null
+          created_at?: string | null
+          health_score: number
           id?: string
-          phone_number?: string | null
-          updated_at?: string
-          user_id: string
+          relationship_score: number
+          total_score: number
+          user_id?: string | null
+          wealth_score: number
         }
         Update: {
-          created_at?: string
-          full_name?: string | null
+          age?: number | null
+          assessment_date?: string | null
+          created_at?: string | null
+          health_score?: number
           id?: string
-          phone_number?: string | null
-          updated_at?: string
-          user_id?: string
+          relationship_score?: number
+          total_score?: number
+          user_id?: string | null
+          wealth_score?: number
+        }
+        Relationships: []
+      }
+      user_profiles: {
+        Row: {
+          age: number | null
+          created_at: string | null
+          email: string | null
+          gender: string | null
+          id: string
+          location: string | null
+          occupation: string | null
+        }
+        Insert: {
+          age?: number | null
+          created_at?: string | null
+          email?: string | null
+          gender?: string | null
+          id?: string
+          location?: string | null
+          occupation?: string | null
+        }
+        Update: {
+          age?: number | null
+          created_at?: string | null
+          email?: string | null
+          gender?: string | null
+          id?: string
+          location?: string | null
+          occupation?: string | null
         }
         Relationships: []
       }
