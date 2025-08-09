@@ -11,11 +11,8 @@ const HeroSection = () => {
 
   const handleStartJourney = () => {
     if (user) {
-      // User is authenticated, proceed to questionnaire
-      // We'll implement this next
-      console.log('Start questionnaire');
+      navigate('/start');
     } else {
-      // User not authenticated, redirect to auth
       navigate('/auth');
     }
   };
