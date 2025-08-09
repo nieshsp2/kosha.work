@@ -14,6 +14,192 @@ export type Database = {
   }
   public: {
     Tables: {
+      HS_assessments: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          current_index: number
+          id: string
+          started_at: string | null
+          status: Database["public"]["Enums"]["hs_assessment_status"]
+          total_questions: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          current_index?: number
+          id?: string
+          started_at?: string | null
+          status?: Database["public"]["Enums"]["hs_assessment_status"]
+          total_questions?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          current_index?: number
+          id?: string
+          started_at?: string | null
+          status?: Database["public"]["Enums"]["hs_assessment_status"]
+          total_questions?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      HS_question_options: {
+        Row: {
+          created_at: string
+          id: string
+          label: string
+          order_index: number
+          question_id: string
+          value: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          label: string
+          order_index: number
+          question_id: string
+          value: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          label?: string
+          order_index?: number
+          question_id?: string
+          value?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "HS_question_options_question_id_fkey"
+            columns: ["question_id"]
+            isOneToOne: false
+            referencedRelation: "HS_questions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      HS_questions: {
+        Row: {
+          category: Database["public"]["Enums"]["hs_category"]
+          created_at: string
+          description: string | null
+          id: string
+          order_index: number
+          title: string
+        }
+        Insert: {
+          category: Database["public"]["Enums"]["hs_category"]
+          created_at?: string
+          description?: string | null
+          id?: string
+          order_index: number
+          title: string
+        }
+        Update: {
+          category?: Database["public"]["Enums"]["hs_category"]
+          created_at?: string
+          description?: string | null
+          id?: string
+          order_index?: number
+          title?: string
+        }
+        Relationships: []
+      }
+      HS_responses: {
+        Row: {
+          answer_text: string | null
+          assessment_id: string
+          created_at: string
+          id: string
+          option_id: string | null
+          question_id: string
+          updated_at: string
+        }
+        Insert: {
+          answer_text?: string | null
+          assessment_id: string
+          created_at?: string
+          id?: string
+          option_id?: string | null
+          question_id: string
+          updated_at?: string
+        }
+        Update: {
+          answer_text?: string | null
+          assessment_id?: string
+          created_at?: string
+          id?: string
+          option_id?: string | null
+          question_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "HS_responses_assessment_id_fkey"
+            columns: ["assessment_id"]
+            isOneToOne: false
+            referencedRelation: "HS_assessments"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "HS_responses_option_id_fkey"
+            columns: ["option_id"]
+            isOneToOne: false
+            referencedRelation: "HS_question_options"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "HS_responses_question_id_fkey"
+            columns: ["question_id"]
+            isOneToOne: false
+            referencedRelation: "HS_questions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      HS_user_profiles: {
+        Row: {
+          age: number | null
+          created_at: string
+          email: string | null
+          gender: string | null
+          id: string
+          location: string | null
+          occupation: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          age?: number | null
+          created_at?: string
+          email?: string | null
+          gender?: string | null
+          id?: string
+          location?: string | null
+          occupation?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          age?: number | null
+          created_at?: string
+          email?: string | null
+          gender?: string | null
+          id?: string
+          location?: string | null
+          occupation?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       hwr_scores: {
         Row: {
           age: number | null
@@ -88,7 +274,8 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      hs_assessment_status: "not_started" | "in_progress" | "completed"
+      hs_category: "health" | "wealth" | "relationships"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -215,6 +402,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      hs_assessment_status: ["not_started", "in_progress", "completed"],
+      hs_category: ["health", "wealth", "relationships"],
+    },
   },
 } as const
