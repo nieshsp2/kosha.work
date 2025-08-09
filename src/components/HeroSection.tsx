@@ -2,19 +2,15 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Sparkles, Heart, Brain, Zap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "@/hooks/useAuth";
+
 import heroImage from "@/assets/hero-meditation.jpg";
 
 const HeroSection = () => {
   const navigate = useNavigate();
-  const { user } = useAuth();
+  
 
   const handleStartJourney = () => {
-    if (user) {
-      navigate('/start');
-    } else {
-      navigate('/auth');
-    }
+    navigate('/assessment');
   };
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-peaceful">

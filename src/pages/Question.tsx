@@ -31,33 +31,10 @@ const Question = () => {
     document.title = `Question ${indexNum} | HS Assessment`;
   }, [indexNum]);
 
-  useEffect(() => {
-    if (!loading && !user) {
-      toast({ title: "Sign in required", description: "Please sign in to continue" });
-      navigate("/auth");
-    }
-  }, [user, loading, navigate, toast]);
 
-  useEffect(() => {
+useEffect(() => {
     const load = async () => {
-      if (!user) return;
       const sb: any = supabase;
-      // Ensure assessment exists
-      let a: AssessmentRow | null = null;
-      {
-        const { data } = await sb.from("HS_assessments").select("*").eq("user_id", user.id).maybeSingle();
-        a = data ?? null;
-      }
-      if (!a) {
-        const { data, error } = await sb
-          .from("HS_assessments")
-          .insert({ user_id: user.id, status: "in_progress", started_at: new Date().toISOString(), current_index: 0, total_questions: 23 })
-          .select("*")
-          .single();
-        if (error) console.warn(error);
-        a = data;
-      }
-      setAssessment(a);
 
       // Load question and options
       const { data: q } = await sb
@@ -73,22 +50,45 @@ const Question = () => {
           .eq("question_id", q.id)
           .order("order_index", { ascending: true });
         setOptions(opts ?? []);
+      }
 
-        // Load existing answer
-        const { data: resp } = await sb
-          .from("HS_responses")
-          .select("option_id")
-          .eq("assessment_id", a!.id)
-          .eq("question_id", q.id)
-          .maybeSingle();
-        setSelected(resp?.option_id ?? null);
+      if (user) {
+        // Ensure assessment exists and load existing answer
+        let a: AssessmentRow | null = null;
+        const { data } = await sb.from("HS_assessments").select("*").eq("user_id", user.id).maybeSingle();
+        a = data ?? null;
+        if (!a) {
+          const { data: created } = await sb
+            .from("HS_assessments")
+            .insert({ user_id: user.id, status: "in_progress", started_at: new Date().toISOString(), current_index: 0, total_questions: 23 })
+            .select("*")
+            .single();
+          a = created;
+        }
+        setAssessment(a);
+        if (q) {
+          const { data: resp } = await sb
+            .from("HS_responses")
+            .select("option_id")
+            .eq("assessment_id", a!.id)
+            .eq("question_id", q.id)
+            .maybeSingle();
+          setSelected(resp?.option_id ?? null);
+        }
+      } else {
+        // Guest mode: restore from localStorage
+        const key = `guest_answer_${indexNum}`;
+        const existing = localStorage.getItem(key);
+        setSelected(existing ?? null);
+        setAssessment(null);
       }
     };
     load();
   }, [user, indexNum]);
 
   const total = assessment?.total_questions ?? 23;
-  const progressPct = Math.round((Math.min(assessment?.current_index ?? 0, total) / total) * 100);
+  const answeredCount = user && assessment ? Math.min(assessment.current_index, total) : Math.max(indexNum - 1, 0);
+  const progressPct = Math.round((answeredCount / total) * 100);
   const isLast = indexNum >= total;
 
   const handlePrev = () => {
@@ -96,34 +96,39 @@ const Question = () => {
   };
 
   const handleNext = async () => {
-    if (!user || !assessment || !question || !selected) {
+    if (!selected || !question) {
       toast({ title: "Select an option", description: "Please choose one to continue." });
       return;
     }
     setBusy(true);
     try {
-      const sb: any = supabase;
-      // Save response
-      const { error: respErr } = await sb
-        .from("HS_responses")
-        .upsert(
-          { assessment_id: assessment.id, question_id: question.id, option_id: selected },
-          { onConflict: "assessment_id,question_id" }
-        );
-      if (respErr) throw respErr;
+      if (user && assessment) {
+        const sb: any = supabase;
+        // Save response
+        const { error: respErr } = await sb
+          .from("HS_responses")
+          .upsert(
+            { assessment_id: assessment.id, question_id: question.id, option_id: selected },
+            { onConflict: "assessment_id,question_id" }
+          );
+        if (respErr) throw respErr;
 
-      // Update progress
-      const newIndex = Math.max(assessment.current_index, indexNum);
-      const updates: any = { current_index: newIndex };
-      if (indexNum >= total) {
-        updates.status = "completed";
-        updates.completed_at = new Date().toISOString();
+        // Update progress
+        const newIndex = Math.max(assessment.current_index, indexNum);
+        const updates: any = { current_index: newIndex };
+        if (indexNum >= total) {
+          updates.status = "completed";
+          updates.completed_at = new Date().toISOString();
+        }
+        const { error: updErr } = await sb
+          .from("HS_assessments")
+          .update(updates)
+          .eq("id", assessment.id);
+        if (updErr) throw updErr;
+      } else {
+        // Guest mode: store selection locally
+        localStorage.setItem(`guest_answer_${indexNum}`, selected);
       }
-      const { error: updErr } = await sb
-        .from("HS_assessments")
-        .update(updates)
-        .eq("id", assessment.id);
-      if (updErr) throw updErr;
 
       if (isLast) {
         toast({ title: "All done!", description: "Assessment completed." });

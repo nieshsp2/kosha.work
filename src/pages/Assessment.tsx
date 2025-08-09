@@ -24,12 +24,6 @@ const Assessment = () => {
 
   useEffect(() => { document.title = "Assessment | HS"; }, []);
 
-  useEffect(() => {
-    if (!loading && !user) {
-      toast({ title: "Sign in required", description: "Please sign in to continue" });
-      navigate("/auth");
-    }
-  }, [user, loading, navigate, toast]);
 
   useEffect(() => {
     const load = async () => {
@@ -53,7 +47,10 @@ const Assessment = () => {
   }, [assessment]);
 
   const handleBegin = async () => {
-    if (!user) return;
+    if (!user) {
+      navigate(`/assessment/question/1`);
+      return;
+    }
     setBusy(true);
     try {
       const sb: any = supabase;
