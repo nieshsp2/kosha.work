@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { guestUserService } from '@/services/guestUserService';
+import KoshaLogo from '@/components/KoshaLogo';
 import { 
   Brain, 
   Heart, 
@@ -62,6 +63,9 @@ const AssessmentExplanation = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-card to-background p-4">
       <div className="max-w-2xl mx-auto pt-16">
+        <div className="mb-8 text-center">
+          <KoshaLogo size="lg" />
+        </div>
         <Card className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-hero opacity-10"></div>
           <CardHeader className="text-center relative pb-8">

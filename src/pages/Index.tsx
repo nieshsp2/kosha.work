@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import KoshaLogo from "@/components/KoshaLogo";
 import { 
   Brain, 
   TrendingUp, 
@@ -46,12 +47,7 @@ const Index = () => {
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <button 
-              onClick={() => window.location.reload()} 
-              className="text-lg md:text-xl font-bold bg-gradient-hero bg-clip-text text-transparent hover:opacity-80 transition-opacity cursor-pointer"
-            >
-              Kosha
-            </button>
+            <KoshaLogo size="lg" />
           </div>
           <div className="hidden md:flex items-center gap-6">
             <a href="#solution" className="text-muted-foreground hover:text-foreground transition-colors">Solution</a>
@@ -516,8 +512,7 @@ const Index = () => {
       <footer className="py-8 md:py-12 bg-card border-t border-border">
         <div className="container mx-auto px-4 text-center">
           <div className="flex items-center justify-center gap-2 mb-3 md:mb-4">
-            <Coins className="h-5 w-5 md:h-6 md:w-6 text-primary" />
-            <span className="text-base md:text-lg font-semibold">Kosha</span>
+            <KoshaLogo size="md" />
             <Badge variant="outline" className="ml-2 text-xs">Blockchain Powered</Badge>
           </div>
           <p className="text-muted-foreground text-xs md:text-sm mb-3 md:mb-4 px-2">

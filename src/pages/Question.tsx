@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { guestUserService } from "@/services/guestUserService";
+import KoshaLogo from "@/components/KoshaLogo";
 
 interface AssessmentRow { id: string; user_id?: string; status: string; total_questions: number; current_index: number; }
 interface QuestionRow { id: string; order_index: number; category: "health"|"wealth"|"relationships"; title: string; description: string | null; question_text: string | null; }
@@ -179,6 +180,10 @@ const Question = () => {
   return (
     <main className="min-h-screen bg-gray-50 text-gray-900 flex items-center justify-center p-3">
       <div className="w-full max-w-2xl">
+        {/* Kosha Logo */}
+        <div className="mb-6 text-center">
+          <KoshaLogo size="lg" />
+        </div>
         {/* Progress Bar */}
         <div className="mb-4">
           <div className="flex justify-center mb-2">

@@ -41,6 +41,7 @@ import {
 import BehavioralNudges from "@/components/BehavioralNudges";
 import { recommendationService, Recommendation } from "@/services/recommendationService";
 import { guestUserService } from "@/services/guestUserService";
+import KoshaLogo from "@/components/KoshaLogo";
 
 interface AssessmentRow {
   id: string;
@@ -573,6 +574,10 @@ const Results = () => {
   return (
     <main className="min-h-screen bg-gray-50 text-gray-900 p-3">
       <div className="max-w-7xl mx-auto space-y-6">
+        {/* Kosha Logo */}
+        <div className="text-center mb-8">
+          <KoshaLogo size="lg" />
+        </div>
         {/* Header */}
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold text-gray-900">Your Assessment Results</h1>
