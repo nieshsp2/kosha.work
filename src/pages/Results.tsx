@@ -509,7 +509,7 @@ const Results = () => {
         
         // Show success toast
         toast({
-          title: "Gemini AI Recommendations Generated",
+          title: "AI Recommendations Generated",
           description: `Successfully generated ${recommendations.length} personalized recommendations`,
           variant: "default"
         });
