@@ -12,13 +12,13 @@ const Navbar = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gradient-kosha rounded-lg flex items-center justify-center">
-              <div className="w-4 h-4 bg-background rounded-sm"></div>
-            </div>
-            <span className="text-xl font-bold text-foreground">
+          <div className="flex items-center">
+            <button 
+              onClick={() => navigate('/')}
+              className="text-xl font-bold text-foreground hover:opacity-80 transition-opacity"
+            >
               <span className="text-primary">Kosha</span>
-            </span>
+            </button>
           </div>
 
           {/* Desktop Navigation */}
