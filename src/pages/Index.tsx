@@ -45,12 +45,10 @@ const Index = () => {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Coins className="h-8 w-8 text-primary animate-glow-pulse" />
+          <div className="flex items-center gap-2" onClick={() => window.location.reload()} style={{ cursor: 'pointer' }}>
             <span className="text-xl font-bold bg-gradient-hero bg-clip-text text-transparent">
               Kosha
             </span>
-            
           </div>
           <div className="hidden md:flex items-center gap-6">
             <a href="#market" className="text-muted-foreground hover:text-foreground transition-colors">Market</a>
@@ -73,10 +71,6 @@ const Index = () => {
           className="absolute inset-0 w-full h-full object-cover opacity-40"
         />
         <div className="relative z-10 container mx-auto px-4 text-center">
-          <Badge className="mb-6 animate-fade-in-up bg-primary/10 text-primary border-primary/20">
-            <Coins className="mr-2 h-4 w-4" />
-            RLUSD-Native B2B Wellbeing Intelligence Platform
-          </Badge>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up bg-gradient-hero bg-clip-text text-transparent">
             Human Behaviour<br />
             <span className="text-brand-relationships">Operating System</span>
@@ -89,10 +83,6 @@ const Index = () => {
             <Button variant="hero" size="lg" className="text-lg px-8 py-6" onClick={() => window.open('/user-info', '_self')}>
               <Database className="mr-2 h-5 w-5" />
               See Platform Demo
-            </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-white/10 border-white/20 text-white hover:bg-white/20">
-              <LineChart className="mr-2 h-5 w-5" />
-              View Market Data
             </Button>
           </div>
           
@@ -536,10 +526,6 @@ const Index = () => {
               <Database className="mr-2 h-5 w-5" />
               View Platform Demo
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-white/10 border-white/20 text-white hover:bg-white/20">
-              <Award className="mr-2 h-5 w-5" />
-              View Whitepaper
-            </Button>
           </div>
         </div>
       </section>
@@ -548,7 +534,6 @@ const Index = () => {
       <footer className="py-12 bg-card border-t border-border">
         <div className="container mx-auto px-4 text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Coins className="h-6 w-6 text-primary" />
             <span className="text-lg font-semibold">Kosha</span>
             <Badge variant="outline" className="ml-2 text-xs">Blockchain Powered</Badge>
           </div>
