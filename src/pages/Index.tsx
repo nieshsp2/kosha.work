@@ -51,11 +51,12 @@ const Index = () => {
             </span>
           </div>
           <div className="hidden md:flex items-center gap-6">
+            <a href="#market" className="text-muted-foreground hover:text-foreground transition-colors">Market</a>
             <a href="#solution" className="text-muted-foreground hover:text-foreground transition-colors">Solution</a>
             <a href="#advantage" className="text-muted-foreground hover:text-foreground transition-colors">Advantage</a>
             <Button variant="cta" size="sm" onClick={() => window.open('/user-info', '_self')}>
-              <BarChart3 className="mr-1 h-4 w-4" />
-              Wellbeing Dashboard
+              <Banknote className="mr-1 h-4 w-4" />
+              Demo Platform
             </Button>
           </div>
         </div>
@@ -80,13 +81,13 @@ const Index = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up">
             <Button variant="hero" size="lg" className="text-lg px-8 py-6" onClick={() => window.open('/user-info', '_self')}>
-              <BarChart3 className="mr-2 h-5 w-5" />
-              Wellbeing Dashboard
+              <Database className="mr-2 h-5 w-5" />
+              See Platform Demo
             </Button>
           </div>
           
           {/* Market Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-16 max-w-6xl mx-auto">
             <Card className="bg-card/10 backdrop-blur-sm border-white/10 animate-float">
               <CardContent className="p-6 text-center">
                 <div className="text-3xl font-bold text-brand-wellness mb-2">B2B</div>
@@ -95,11 +96,17 @@ const Index = () => {
             </Card>
             <Card className="bg-card/10 backdrop-blur-sm border-white/10 animate-float" style={{ animationDelay: '0.3s' }}>
               <CardContent className="p-6 text-center">
+                <div className="text-3xl font-bold text-brand-wealth mb-2">6:1</div>
+                <div className="text-sm text-muted-foreground">Proven Wellbeing ROI</div>
+              </CardContent>
+            </Card>
+            <Card className="bg-card/10 backdrop-blur-sm border-white/10 animate-float" style={{ animationDelay: '0.6s' }}>
+              <CardContent className="p-6 text-center">
                 <div className="text-3xl font-bold text-brand-relationships mb-2">87%</div>
                 <div className="text-sm text-muted-foreground">Programs Fail (Poor Measurement)</div>
               </CardContent>
             </Card>
-            <Card className="bg-card/10 backdrop-blur-sm border-white/10 animate-float" style={{ animationDelay: '0.6s' }}>
+            <Card className="bg-card/10 backdrop-blur-sm border-white/10 animate-float" style={{ animationDelay: '0.9s' }}>
               <CardContent className="p-6 text-center">
                 <div className="text-3xl font-bold text-primary mb-2">150</div>
                 <div className="text-sm text-muted-foreground">Countries Available</div>
@@ -151,6 +158,13 @@ const Index = () => {
               <p className="text-muted-foreground mb-4">Fragmented solutions, poor adoption</p>
               <p className="text-sm text-destructive font-medium">Employees need holistic, not siloed approaches</p>
             </Card>
+          </div>
+          
+          <div className="text-center">
+            <Button variant="hero" size="lg">
+              <Coins className="mr-2 h-5 w-5" />
+              See Kosha's Solution
+            </Button>
           </div>
         </div>
       </section>
@@ -215,8 +229,8 @@ const Index = () => {
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button variant="cta" size="lg" onClick={() => window.open('/user-info', '_self')}>
-                  <BarChart3 className="mr-2 h-5 w-5" />
-                  Wellbeing Dashboard
+                  <Database className="mr-2 h-5 w-5" />
+                  Platform Demo
                 </Button>
                 <Button variant="outline" size="lg">
                   <Award className="mr-2 h-5 w-5" />
@@ -509,8 +523,8 @@ const Index = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button variant="secondary" size="lg" className="text-lg px-8 py-6 bg-white text-primary hover:bg-white/90" onClick={() => window.open('/user-info', '_self')}>
-              <BarChart3 className="mr-2 h-5 w-5" />
-              Wellbeing Dashboard
+              <Database className="mr-2 h-5 w-5" />
+              View Platform Demo
             </Button>
           </div>
         </div>
