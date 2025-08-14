@@ -15,9 +15,9 @@ const Navbar = () => {
           <div className="flex items-center">
             <button 
               onClick={() => navigate('/')}
-              className="text-xl font-bold text-foreground hover:opacity-80 transition-opacity"
+              className="text-xl font-bold hover:opacity-80 transition-opacity"
             >
-              <span className="text-primary">Kosha</span>
+              <span className="bg-gradient-hero bg-clip-text text-transparent">Kosha</span>
             </button>
           </div>
 
