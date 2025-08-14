@@ -490,7 +490,7 @@ const Results = () => {
               gender: 'Not specified',
               location: 'Global',
               personalityType: 'ambivert' as const,
-              culturalValues: ['Wellness', 'Growth'],
+              culturalValues: ['Wellbeing', 'Growth'],
               lifestyleConstraints: ['Modern lifestyle']
             };
           }
@@ -786,7 +786,7 @@ const Results = () => {
               Your Personalized AI Action Plan
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Based on your assessment results, here are AI-powered recommendations and behavioral nudges to help you improve your wellness scores.
+              Based on your assessment results, here are AI-powered recommendations and behavioral nudges to help you improve your wellbeing scores.
             </p>
           </div>
 

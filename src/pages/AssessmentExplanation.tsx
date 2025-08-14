@@ -41,7 +41,7 @@ const AssessmentExplanation = () => {
     {
       icon: <DollarSign className="h-6 w-6 text-amber-600" />,
       title: "Wealth Assessment", 
-      description: "Assess your financial wellness, work satisfaction, and creative fulfillment",
+      description: "Assess your financial wellbeing, work satisfaction, and creative fulfillment",
       duration: "4-6 minutes",
       questions: 6,
       color: "bg-amber-50 border-amber-200"
@@ -60,7 +60,7 @@ const AssessmentExplanation = () => {
     {
       icon: <Target className="h-5 w-5 text-primary" />,
       title: "Personalized Insights",
-      description: "Get detailed breakdown of your wellness across all dimensions"
+      description: "Get detailed breakdown of your wellbeing across all dimensions"
     },
     {
       icon: <Lightbulb className="h-5 w-5 text-primary" />,
@@ -118,10 +118,10 @@ const AssessmentExplanation = () => {
         {/* Header */}
         <div className="text-center mb-8 md:mb-12">
           <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-            Your Wellness Assessment Journey
+            Your Wellbeing Assessment Journey
           </h1>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover your holistic wellness score across health, wealth, and relationships. 
+            Discover your holistic wellbeing score across health, wealth, and relationships. 
             This comprehensive assessment will help you understand where you are and guide you toward where you want to be.
           </p>
         </div>
@@ -185,7 +185,7 @@ const AssessmentExplanation = () => {
           <CardHeader className="text-center">
             <CardTitle className="text-2xl">What You'll Get</CardTitle>
             <CardDescription>
-              Your comprehensive wellness report includes detailed insights and actionable recommendations
+              Your comprehensive wellbeing report includes detailed insights and actionable recommendations
             </CardDescription>
           </CardHeader>
           <CardContent>

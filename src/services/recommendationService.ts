@@ -276,9 +276,9 @@ export class RecommendationService {
     // Always add at least one general nudge
     if (nudges.length === 0) {
       nudges.push({
-        id: 'general-wellness',
-        title: 'Start Your Wellness Journey',
-        description: 'Begin with small, manageable changes to build momentum and improve your overall wellness score',
+        id: 'general-wellbeing',
+        title: 'Start Your Wellbeing Journey',
+        description: 'Begin with small, manageable changes to build momentum and improve your overall wellbeing score',
         category: 'health',
         priority: 'medium',
         actionableSteps: [
@@ -313,7 +313,7 @@ export class RecommendationService {
       console.log('💚 Adding health fallback recommendation (score below 70%)');
       recommendations.push({
         title: 'Prioritize Health Fundamentals',
-        description: 'Focus on building healthy habits in nutrition, exercise, and sleep to improve your overall wellness score.',
+        description: 'Focus on building healthy habits in nutrition, exercise, and sleep to improve your overall wellbeing score.',
         category: 'health',
         priority: 'high',
         actionableSteps: [
@@ -368,8 +368,8 @@ export class RecommendationService {
     // Always add at least one general recommendation
     if (recommendations.length === 0) {
       recommendations.push({
-        title: 'Start Your Wellness Journey',
-        description: 'Begin with small, manageable changes to build momentum and improve your overall wellness score.',
+        title: 'Start Your Wellbeing Journey',
+        description: 'Begin with small, manageable changes to build momentum and improve your overall wellbeing score.',
         category: 'health',
         priority: 'medium',
         actionableSteps: [

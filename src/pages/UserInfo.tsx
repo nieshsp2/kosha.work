@@ -100,7 +100,7 @@ const UserInfo = () => {
             Complete Your Profile
           </CardTitle>
           <CardDescription className="text-base md:text-lg text-gray-600">
-            Tell us a bit about yourself to personalize your wellness assessment
+            Tell us a bit about yourself to personalize your wellbeing assessment
           </CardDescription>
         </CardHeader>
         

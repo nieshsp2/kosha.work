@@ -35,7 +35,7 @@ const HeroSection = () => {
           {/* Badge */}
           <Badge className="mb-6 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
             <Sparkles className="w-4 h-4 mr-2" />
-            AI-Powered Holistic Wellness Platform
+            AI-Powered Holistic Wellbeing Platform
           </Badge>
 
           {/* Heading */}

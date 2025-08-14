@@ -81,7 +81,7 @@ const healers = [
     rating: 4.8,
     reviews: 167,
     sessions: 980,
-    specialties: ["Ayurveda", "Nutrition", "Holistic Wellness"],
+    specialties: ["Ayurveda", "Nutrition", "Holistic Wellbeing"],
     languages: ["English", "Hindi", "Gujarati"],
     experience: "18 years",
     price: "$50-70",
@@ -124,7 +124,7 @@ const HealerProfiles = () => {
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Our global network of certified healers undergoes rigorous vetting and continuous training 
-            to provide you with the highest quality holistic wellness experiences.
+            to provide you with the highest quality holistic wellbeing experiences.
           </p>
         </div>
 

@@ -87,14 +87,14 @@ const BehavioralNudges: React.FC<BehavioralNudgesProps> = ({ nudges, onNudgeComp
             🎯 Fallback Recommendations
           </CardTitle>
           <CardDescription className="text-center">
-            AI recommendations are not available. Here are some general wellness tips to get you started.
+            AI recommendations are not available. Here are some general wellbeing tips to get you started.
           </CardDescription>
         </CardHeader>
         <CardContent className="text-center">
           <div className="grid gap-4 md:grid-cols-3 mt-6">
             <div className="p-4 bg-green-50 rounded-lg border border-green-200">
               <Heart className="h-8 w-8 text-green-600 mx-auto mb-2" />
-              <h4 className="font-medium text-green-800">Health & Wellness</h4>
+              <h4 className="font-medium text-green-800">Health & Wellbeing</h4>
               <p className="text-sm text-green-600 mt-1">Focus on nutrition, exercise, and sleep</p>
             </div>
             <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">

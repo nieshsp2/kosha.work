@@ -83,7 +83,7 @@ const modalities = [
     title: "Ayurvedic Healing",
     description: "Ancient wisdom for holistic health through personalized nutrition and lifestyle.",
     color: "chakra-sacral",
-    benefits: ["Holistic Wellness", "Natural Healing", "Life Balance"],
+    benefits: ["Holistic Wellbeing", "Natural Healing", "Life Balance"],
     duration: "60-90 mins"
   }
 ];
@@ -101,7 +101,7 @@ const HealingModalities = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             Discover Your Path to{" "}
             <span className="bg-gradient-healing bg-clip-text text-transparent">
-              Wellness
+              Wellbeing
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">

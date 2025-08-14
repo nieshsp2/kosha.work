@@ -27,12 +27,12 @@ const steps = [
   {
     icon: Brain,
     title: "AI Analysis & Recommendations",
-    description: "Our AI engine analyzes your inputs and creates a personalized wellness plan with modality suggestions.",
+    description: "Our AI engine analyzes your inputs and creates a personalized wellbeing plan with modality suggestions.",
     details: [
       "Advanced AI processing",
       "Personalized healing path",
       "Modality matching",
-      "Custom wellness plan"
+      "Custom wellbeing plan"
     ],
     color: "chakra-third-eye"
   },
@@ -75,7 +75,7 @@ const HowItWorks = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             Your Journey to{" "}
             <span className="bg-gradient-healing bg-clip-text text-transparent">
-              Holistic Wellness
+              Holistic Wellbeing
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">

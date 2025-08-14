@@ -30,7 +30,7 @@ const Footer = () => {
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed text-sm md:text-base">
               First blockchain-powered B2B platform turning employee wellbeing into measurable assets. 
-              Enterprise-grade holistic wellness intelligence for modern organizations.
+              Enterprise-grade holistic wellbeing intelligence for modern organizations.
             </p>
             <div className="flex space-x-3">
               <Button size="icon" variant="ghost" className="hover:bg-green-500/20 text-gray-400 hover:text-green-400 transition-colors">
@@ -117,7 +117,7 @@ const Footer = () => {
             <div className="flex items-center space-x-2 text-xs md:text-sm text-gray-400">
               <span>Enabling sustainability and trust</span>
               <Heart className="w-3 h-3 md:w-4 md:h-4 text-green-400" />
-              <span>in enterprise wellness</span>
+              <span>in enterprise wellbeing</span>
             </div>
           </div>
         </div>
