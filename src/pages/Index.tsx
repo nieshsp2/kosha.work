@@ -53,7 +53,7 @@ const Index = () => {
           <div className="hidden md:flex items-center gap-6">
             <a href="#solution" className="text-muted-foreground hover:text-foreground transition-colors">Solution</a>
             <a href="#advantage" className="text-muted-foreground hover:text-foreground transition-colors">Advantage</a>
-            <Button variant="cta" size="sm" onClick={() => window.open('/user-info', '_self')}>
+            <Button variant="cta" size="sm" disabled>
               <BarChart3 className="mr-1 h-4 w-4" />
               Wellbeing Dashboard
             </Button>
