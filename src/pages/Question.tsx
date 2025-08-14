@@ -10,7 +10,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { guestUserService } from "@/services/guestUserService";
 
 interface AssessmentRow { id: string; user_id?: string; status: string; total_questions: number; current_index: number; }
-interface QuestionRow { id: string; order_index: number; category: "health"|"wealth"|"relationships"; title: string; description: string | null; }
+interface QuestionRow { id: string; order_index: number; category: "health"|"wealth"|"relationships"; title: string; description: string | null; question_text: string | null; }
 interface OptionRow { id: string; question_id: string; label: string; value: number; order_index: number; }
 
 const Question = () => {
@@ -225,14 +225,19 @@ const Question = () => {
               </div>
             </div>
 
-            {/* Question Title */}
+            {/* Question Title and Content */}
             <div className="text-center mb-6">
               <h2 className="text-lg md:text-xl font-medium text-gray-400 mb-4">
                 {question.title}
               </h2>
               {question.description && (
-                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight max-w-4xl mx-auto">
+                <p className="text-base md:text-lg text-gray-300 mb-6 max-w-3xl mx-auto">
                   {question.description}
+                </p>
+              )}
+              {question.question_text && (
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight max-w-4xl mx-auto">
+                  {question.question_text}
                 </h1>
               )}
             </div>

@@ -247,6 +247,7 @@ export type Database = {
           description: string | null
           id: string
           order_index: number
+          question_text: string | null
           title: string
         }
         Insert: {
@@ -255,6 +256,7 @@ export type Database = {
           description?: string | null
           id?: string
           order_index: number
+          question_text?: string | null
           title: string
         }
         Update: {
@@ -263,6 +265,7 @@ export type Database = {
           description?: string | null
           id?: string
           order_index?: number
+          question_text?: string | null
           title?: string
         }
         Relationships: []
