@@ -33,20 +33,6 @@ export default {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))'
 				},
-				healing: {
-					DEFAULT: 'hsl(var(--healing))',
-					foreground: 'hsl(var(--healing-foreground))',
-					light: 'hsl(var(--healing-light))'
-				},
-				chakra: {
-					root: 'hsl(var(--chakra-root))',
-					sacral: 'hsl(var(--chakra-sacral))',
-					solar: 'hsl(var(--chakra-solar))',
-					heart: 'hsl(var(--chakra-heart))',
-					throat: 'hsl(var(--chakra-throat))',
-					'third-eye': 'hsl(var(--chakra-third-eye))',
-					crown: 'hsl(var(--chakra-crown))'
-				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
@@ -84,12 +70,12 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			backgroundImage: {
-				'gradient-healing': 'var(--gradient-healing)',
-				'gradient-chakra': 'var(--gradient-chakra)',
-				'gradient-peaceful': 'var(--gradient-peaceful)'
+				'gradient-kosha': 'var(--gradient-kosha)',
+				'gradient-kosha-alt': 'var(--gradient-kosha-alt)',
+				'gradient-dark': 'var(--gradient-dark)'
 			},
 			boxShadow: {
-				'healing': 'var(--shadow-healing)',
+				'kosha': 'var(--shadow-kosha)',
 				'glow': 'var(--shadow-glow)'
 			},
 			keyframes: {

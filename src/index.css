@@ -8,100 +8,79 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Healing & Wellbeing Color Palette */
-    --background: 220 40% 99%;
-    --foreground: 240 15% 20%;
+    /* Kosha Brand Colors */
+    --background: 180 100% 99%;
+    --foreground: 180 20% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 15% 20%;
+    --card-foreground: 180 20% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 15% 20%;
+    --popover-foreground: 180 20% 15%;
 
-    /* Primary - Healing Purple/Violet */
-    --primary: 270 65% 55%;
+    /* Kosha Primary - Green */
+    --primary: 150 60% 50%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 270 80% 70%;
+    --primary-glow: 150 80% 60%;
 
-    /* Secondary - Calming Teal */
+    /* Kosha Secondary - Teal */
     --secondary: 180 45% 85%;
     --secondary-foreground: 180 60% 25%;
 
-    /* Healing Green */
-    --healing: 150 60% 50%;
-    --healing-foreground: 0 0% 100%;
-    --healing-light: 150 40% 90%;
+    /* Kosha Accent - Blue-Green */
+    --accent: 170 50% 45%;
+    --accent-foreground: 0 0% 100%;
 
-    /* Chakra Colors */
-    --chakra-root: 0 80% 60%;
-    --chakra-sacral: 25 90% 65%;
-    --chakra-solar: 45 95% 70%;
-    --chakra-heart: 120 60% 55%;
-    --chakra-throat: 200 70% 60%;
-    --chakra-third-eye: 250 70% 65%;
-    --chakra-crown: 280 80% 70%;
-
-    --muted: 220 20% 95%;
-    --muted-foreground: 240 10% 50%;
-
-    --accent: 270 30% 92%;
-    --accent-foreground: 270 60% 30%;
+    --muted: 180 20% 95%;
+    --muted-foreground: 180 10% 50%;
 
     --destructive: 0 75% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 88%;
-    --input: 220 15% 88%;
-    --ring: 270 65% 55%;
+    --border: 180 15% 88%;
+    --input: 180 15% 88%;
+    --ring: 150 60% 50%;
 
-    /* Gradients */
-    --gradient-healing: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--healing)));
-    --gradient-chakra: linear-gradient(90deg, 
-      hsl(var(--chakra-root)), 
-      hsl(var(--chakra-sacral)), 
-      hsl(var(--chakra-solar)), 
-      hsl(var(--chakra-heart)), 
-      hsl(var(--chakra-throat)), 
-      hsl(var(--chakra-third-eye)), 
-      hsl(var(--chakra-crown))
-    );
-    --gradient-peaceful: linear-gradient(180deg, hsl(220 40% 99%), hsl(180 45% 95%));
+    /* Kosha Gradients */
+    --gradient-kosha: linear-gradient(135deg, hsl(150 60% 35%), hsl(170 50% 45%));
+    --gradient-kosha-alt: linear-gradient(90deg, hsl(150 60% 35%), hsl(180 60% 40%));
+    --gradient-dark: linear-gradient(135deg, hsl(180 20% 10%), hsl(150 30% 8%));
 
     /* Shadows */
-    --shadow-healing: 0 10px 40px -10px hsl(var(--primary) / 0.3);
-    --shadow-glow: 0 0 30px hsl(var(--primary-glow) / 0.4);
+    --shadow-kosha: 0 10px 40px -10px hsl(150 60% 35% / 0.3);
+    --shadow-glow: 0 0 30px hsl(150 80% 60% / 0.4);
 
     /* Animations */
-    --transition-healing: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-kosha: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.8rem;
 
     /* Sidebar variables */
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-foreground: 180 5.3% 26.1%;
+    --sidebar-primary: 180 5.9% 10%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 180 4.8% 95.9%;
+    --sidebar-accent-foreground: 180 5.9% 10%;
+    --sidebar-border: 180 13% 91%;
+    --sidebar-ring: 150 60% 50%;
   }
 
-  /* Utility classes for gradients */
-  .bg-gradient-healing {
-    background: var(--gradient-healing);
+  /* Utility classes for Kosha gradients */
+  .bg-gradient-kosha {
+    background: var(--gradient-kosha);
   }
 
-  .bg-gradient-peaceful {
-    background: var(--gradient-peaceful);
+  .bg-gradient-kosha-alt {
+    background: var(--gradient-kosha-alt);
   }
 
-  .bg-gradient-chakra {
-    background: var(--gradient-chakra);
+  .bg-gradient-dark {
+    background: var(--gradient-dark);
   }
 
-  .shadow-healing {
-    box-shadow: var(--shadow-healing);
+  .shadow-kosha {
+    box-shadow: var(--shadow-kosha);
   }
 
   .shadow-glow {
@@ -127,46 +106,42 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 220 20% 95%;
+    --background: 180 20% 8%;
+    --foreground: 150 20% 90%;
 
-    --card: 240 15% 12%;
-    --card-foreground: 220 20% 95%;
+    --card: 180 20% 12%;
+    --card-foreground: 150 20% 90%;
 
-    --popover: 240 15% 12%;
-    --popover-foreground: 220 20% 95%;
+    --popover: 180 20% 12%;
+    --popover-foreground: 150 20% 90%;
 
-    --primary: 270 80% 70%;
-    --primary-foreground: 240 15% 8%;
-    --primary-glow: 270 90% 80%;
+    --primary: 150 60% 50%;
+    --primary-foreground: 180 20% 8%;
+    --primary-glow: 150 80% 60%;
 
-    --secondary: 240 15% 20%;
-    --secondary-foreground: 220 20% 95%;
+    --secondary: 180 15% 20%;
+    --secondary-foreground: 150 20% 90%;
 
-    --healing: 150 60% 60%;
-    --healing-foreground: 240 15% 8%;
-    --healing-light: 150 30% 20%;
+    --accent: 170 50% 45%;
+    --accent-foreground: 180 20% 8%;
 
-    --muted: 240 15% 18%;
-    --muted-foreground: 220 10% 60%;
-
-    --accent: 240 15% 18%;
-    --accent-foreground: 220 20% 95%;
+    --muted: 180 15% 18%;
+    --muted-foreground: 180 10% 60%;
 
     --destructive: 0 75% 60%;
-    --destructive-foreground: 220 20% 95%;
+    --destructive-foreground: 150 20% 90%;
 
-    --border: 240 15% 20%;
-    --input: 240 15% 20%;
-    --ring: 270 80% 70%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --border: 180 15% 20%;
+    --input: 180 15% 20%;
+    --ring: 150 60% 50%;
+    --sidebar-background: 180 5.9% 10%;
+    --sidebar-foreground: 180 4.8% 95.9%;
+    --sidebar-primary: 150 60% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 180 3.7% 15.9%;
+    --sidebar-accent-foreground: 180 4.8% 95.9%;
+    --sidebar-border: 180 3.7% 15.9%;
+    --sidebar-ring: 150 60% 50%;
   }
 
   * {
