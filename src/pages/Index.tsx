@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/Navbar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
@@ -43,7 +42,27 @@ import behaviorSystem from "@/assets/behavior-system.jpg";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navbar />
+      {/* Navigation */}
+      <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Coins className="h-8 w-8 text-primary animate-glow-pulse" />
+            <span className="text-xl font-bold bg-gradient-hero bg-clip-text text-transparent">
+              Kosha
+            </span>
+            
+          </div>
+          <div className="hidden md:flex items-center gap-6">
+            <a href="#market" className="text-muted-foreground hover:text-foreground transition-colors">Market</a>
+            <a href="#solution" className="text-muted-foreground hover:text-foreground transition-colors">Solution</a>
+            <a href="#advantage" className="text-muted-foreground hover:text-foreground transition-colors">Advantage</a>
+            <Button variant="cta" size="sm" onClick={() => window.open('/user-info', '_self')}>
+              <Banknote className="mr-1 h-4 w-4" />
+              Demo Platform
+            </Button>
+          </div>
+        </div>
+      </nav>
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -64,17 +83,21 @@ const Index = () => {
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-4xl mx-auto animate-fade-in-up">
             First blockchain-powered B2B platform turning employee wellbeing into measurable assets. 
-            <span className="text-primary font-semibold"> 87% of the comprehensive employee wellbeing programs fail</span> due to poor or no outcome measurement and engagement.
+            <span className="text-primary font-semibold">87% of corporate programs fail</span> - we solve compliance, risk assessment, and premium optimization.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up">
             <Button variant="hero" size="lg" className="text-lg px-8 py-6" onClick={() => window.open('/user-info', '_self')}>
               <Database className="mr-2 h-5 w-5" />
               See Platform Demo
             </Button>
+            <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-white/10 border-white/20 text-white hover:bg-white/20">
+              <LineChart className="mr-2 h-5 w-5" />
+              View Market Data
+            </Button>
           </div>
           
           {/* Market Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-16 max-w-6xl mx-auto">
             <Card className="bg-card/10 backdrop-blur-sm border-white/10 animate-float">
               <CardContent className="p-6 text-center">
                 <div className="text-3xl font-bold text-brand-wellness mb-2">B2B</div>
@@ -83,11 +106,17 @@ const Index = () => {
             </Card>
             <Card className="bg-card/10 backdrop-blur-sm border-white/10 animate-float" style={{ animationDelay: '0.3s' }}>
               <CardContent className="p-6 text-center">
+                <div className="text-3xl font-bold text-brand-wealth mb-2">6:1</div>
+                <div className="text-sm text-muted-foreground">Proven Wellbeing ROI</div>
+              </CardContent>
+            </Card>
+            <Card className="bg-card/10 backdrop-blur-sm border-white/10 animate-float" style={{ animationDelay: '0.6s' }}>
+              <CardContent className="p-6 text-center">
                 <div className="text-3xl font-bold text-brand-relationships mb-2">87%</div>
                 <div className="text-sm text-muted-foreground">Programs Fail (Poor Measurement)</div>
               </CardContent>
             </Card>
-            <Card className="bg-card/10 backdrop-blur-sm border-white/10 animate-float" style={{ animationDelay: '0.6s' }}>
+            <Card className="bg-card/10 backdrop-blur-sm border-white/10 animate-float" style={{ animationDelay: '0.9s' }}>
               <CardContent className="p-6 text-center">
                 <div className="text-3xl font-bold text-primary mb-2">150</div>
                 <div className="text-sm text-muted-foreground">Countries Available</div>
@@ -105,10 +134,10 @@ const Index = () => {
               <AlertTriangle className="mr-2 h-4 w-4" />
               The Corporate Wellbeing Crisis
             </Badge>
-            <h2 className="text-4xl font-bold mb-6">$150B Lost Productivity Emergency</h2>
+            <h2 className="text-4xl font-bold mb-6">$120B Lost Productivity Emergency</h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
               <span className="text-destructive font-semibold">Lost productivity due to absenteeism</span> related to physical and mental health 
-              is expected to cross <span className="text-destructive font-semibold">USD 150 billion</span>, making wellbeing measurement a <span className="text-primary font-semibold">fiduciary duty for corporate boards</span>.
+              is expected to cross <span className="text-destructive font-semibold">USD 120 billion by 2032</span>, making wellbeing measurement a <span className="text-primary font-semibold">fiduciary duty for corporate boards</span>.
             </p>
           </div>
           
@@ -141,6 +170,12 @@ const Index = () => {
             </Card>
           </div>
           
+          <div className="text-center">
+            <Button variant="hero" size="lg">
+              <Coins className="mr-2 h-5 w-5" />
+              See Kosha's Solution
+            </Button>
+          </div>
         </div>
       </section>
 
