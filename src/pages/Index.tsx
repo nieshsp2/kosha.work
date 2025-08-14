@@ -134,10 +134,10 @@ const Index = () => {
               <AlertTriangle className="mr-2 h-4 w-4" />
               The Corporate Wellbeing Crisis
             </Badge>
-            <h2 className="text-4xl font-bold mb-6">$120B Lost Productivity Emergency</h2>
+            <h2 className="text-4xl font-bold mb-6">$150B Lost Productivity Emergency</h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
               <span className="text-destructive font-semibold">Lost productivity due to absenteeism</span> related to physical and mental health 
-              is expected to cross <span className="text-destructive font-semibold">USD 120 billion by 2032</span>, making wellbeing measurement a <span className="text-primary font-semibold">fiduciary duty for corporate boards</span>.
+              is expected to cross <span className="text-destructive font-semibold">USD 150 billion</span>, making wellbeing measurement a <span className="text-primary font-semibold">fiduciary duty for corporate boards</span>.
             </p>
           </div>
           
@@ -168,13 +168,6 @@ const Index = () => {
               <p className="text-muted-foreground mb-4">Fragmented solutions, poor adoption</p>
               <p className="text-sm text-destructive font-medium">Employees need holistic, not siloed approaches</p>
             </Card>
-          </div>
-          
-          <div className="text-center">
-            <Button variant="hero" size="lg">
-              <Coins className="mr-2 h-5 w-5" />
-              See Kosha's Solution
-            </Button>
           </div>
         </div>
       </section>
