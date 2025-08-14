@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "@/hooks/useAuth";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,7 +7,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 const Start = () => {
-  const { user, loading } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -19,40 +16,45 @@ const Start = () => {
   const [gender, setGender] = useState("");
   const [location, setLocation] = useState("");
   const [saving, setSaving] = useState(false);
+  const [hasCompletedAssessment, setHasCompletedAssessment] = useState(false);
 
   useEffect(() => {
     document.title = "Start Your Healing Journey | HS Profiles";
   }, []);
 
   useEffect(() => {
-    if (!loading && !user) {
-      toast({ title: "Sign in required", description: "Please sign in to continue" });
-      navigate("/auth");
-    }
-  }, [user, loading, navigate, toast]);
+    const checkCompletedAssessment = () => {
+      // Check if guest user has completed assessment by looking at localStorage
+      let hasResponses = false;
+      for (let i = 1; i <= 23; i++) {
+        const key = `guest_answer_${i}`;
+        if (localStorage.getItem(key)) {
+          hasResponses = true;
+          break;
+        }
+      }
+      setHasCompletedAssessment(hasResponses);
+    };
+
+    checkCompletedAssessment();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!user) return;
     setSaving(true);
     try {
-      const sb: any = supabase; // avoid TS mismatch with generated types
-      const { error } = await sb
-        .from("HS_user_profiles")
-        .upsert(
-          {
-            user_id: user.id,
-            email: email || null,
-            age: age ? Number(age) : null,
-            occupation: occupation || null,
-            gender: gender || null,
-            location: location || null,
-          },
-          { onConflict: "user_id" }
-        );
-      if (error) throw error;
-      toast({ title: "Saved", description: "Profile saved. Continue to assessment." });
-      navigate("/assessment");
+      // Store profile data in localStorage for guest users
+      const profileData = {
+        email: email || null,
+        age: age ? Number(age) : null,
+        occupation: occupation || null,
+        gender: gender || null,
+        location: location || null,
+      };
+      localStorage.setItem('guest_profile', JSON.stringify(profileData));
+      
+      toast({ title: "Profile saved", description: "Continue to complete your detailed profile." });
+      navigate("/user-info");
     } catch (err: any) {
       toast({ title: "Error", description: err.message, variant: "destructive" });
     } finally {
@@ -67,7 +69,12 @@ const Start = () => {
           <CardTitle as-child>
             <h1 className="text-3xl font-bold">Start your healing journey</h1>
           </CardTitle>
-          <CardDescription>Tell us a bit about you to personalize your experience.</CardDescription>
+          <CardDescription>
+            {hasCompletedAssessment 
+              ? "Update your profile or view your previous assessment results below."
+              : "Tell us a bit about you to personalize your experience."
+            }
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -91,9 +98,19 @@ const Start = () => {
               <Label htmlFor="location">Location</Label>
               <Input id="location" placeholder="City, Country" value={location} onChange={(e) => setLocation(e.target.value)} />
             </div>
-            <div className="md:col-span-2 flex justify-end">
+            <div className="md:col-span-2 flex justify-between items-center">
+              {hasCompletedAssessment && (
+                <Button 
+                  type="button" 
+                  variant="outline" 
+                  onClick={() => navigate("/assessment/results")}
+                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                >
+                  View Previous Results
+                </Button>
+              )}
               <Button type="submit" className="bg-gradient-healing" disabled={saving}>
-                {saving ? "Saving..." : "Continue to Assessment"}
+                {saving ? "Saving..." : "Start Assessment"}
               </Button>
             </div>
           </form>

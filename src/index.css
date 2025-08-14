@@ -76,21 +76,54 @@ All colors MUST be HSL.
 
     --radius: 0.8rem;
 
+    /* Sidebar variables */
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Utility classes for gradients */
+  .bg-gradient-healing {
+    background: var(--gradient-healing);
+  }
+
+  .bg-gradient-peaceful {
+    background: var(--gradient-peaceful);
+  }
+
+  .bg-gradient-chakra {
+    background: var(--gradient-chakra);
+  }
+
+  .shadow-healing {
+    box-shadow: var(--shadow-healing);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px var(--shadow-glow); }
+    50% { box-shadow: 0 0 40px var(--shadow-glow), 0 0 60px var(--shadow-glow); }
   }
 
   .dark {
@@ -135,9 +168,7 @@ All colors MUST be HSL.
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }

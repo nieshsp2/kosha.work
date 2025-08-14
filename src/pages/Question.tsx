@@ -1,20 +1,19 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useAuth } from "@/hooks/useAuth";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
+import { supabase } from "@/integrations/supabase/client";
+import { guestUserService } from "@/services/guestUserService";
 
-interface AssessmentRow { id: string; user_id: string; status: string; total_questions: number; current_index: number; }
+interface AssessmentRow { id: string; user_id?: string; status: string; total_questions: number; current_index: number; }
 interface QuestionRow { id: string; order_index: number; category: "health"|"wealth"|"relationships"; title: string; description: string | null; }
 interface OptionRow { id: string; question_id: string; label: string; value: number; order_index: number; }
 
 const Question = () => {
-  const { user, loading } = useAuth();
   const { orderIndex } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -31,68 +30,65 @@ const Question = () => {
     document.title = `Question ${indexNum} | HS Assessment`;
   }, [indexNum]);
 
-
-useEffect(() => {
+  useEffect(() => {
     const load = async () => {
-      const sb: any = supabase;
+      try {
+        // Load question and options from Supabase
+        const { data: q, error: qError } = await supabase
+          .from("HS_questions")
+          .select("*")
+          .eq("order_index", indexNum)
+          .maybeSingle();
 
-      // Load question and options
-      const { data: q } = await sb
-        .from("HS_questions")
-        .select("*")
-        .eq("order_index", indexNum)
-        .maybeSingle();
-      setQuestion(q ?? null);
-      if (q) {
-        const { data: opts } = await sb
+        if (qError) {
+          console.error("Error loading question:", qError);
+          toast({ title: "Error", description: "Failed to load question", variant: "destructive" });
+          return;
+        }
+
+        if (!q) {
+          toast({ title: "Error", description: "Question not found", variant: "destructive" });
+          return;
+        }
+
+        setQuestion(q);
+
+        // Load options for this question
+        const { data: opts, error: optsError } = await supabase
           .from("HS_question_options")
           .select("*")
           .eq("question_id", q.id)
           .order("order_index", { ascending: true });
-        setOptions(opts ?? []);
-      }
 
-      if (user) {
-        // Ensure assessment exists and load existing answer
-        let a: AssessmentRow | null = null;
-        const { data } = await sb.from("HS_assessments").select("*").eq("user_id", user.id).maybeSingle();
-        a = data ?? null;
-        if (!a) {
-          const { data: created } = await sb
-            .from("HS_assessments")
-            .insert({ user_id: user.id, status: "in_progress", started_at: new Date().toISOString(), current_index: 0, total_questions: 23 })
-            .select("*")
-            .single();
-          a = created;
+        if (optsError) {
+          console.error("Error loading options:", optsError);
+          toast({ title: "Error", description: "Failed to load options", variant: "destructive" });
+          return;
         }
-        setAssessment(a);
-        if (q) {
-          const { data: resp } = await sb
-            .from("HS_responses")
-            .select("option_id")
-            .eq("assessment_id", a!.id)
-            .eq("question_id", q.id)
-            .maybeSingle();
-          setSelected(resp?.option_id ?? null);
-        }
-      } else {
-        // Guest mode: restore from localStorage
-        const key = `guest_answer_${indexNum}`;
-        const existing = localStorage.getItem(key);
-        setSelected(existing ?? null);
+
+        setOptions(opts || []);
+
+        // Clear previous selection when loading new question
+        setSelected(null);
         setAssessment(null);
+      } catch (error) {
+        console.error("Error in load function:", error);
+        toast({ title: "Error", description: "Failed to load question data", variant: "destructive" });
       }
     };
     load();
-  }, [user, indexNum]);
+  }, [indexNum, toast]);
 
-  const total = assessment?.total_questions ?? 23;
-  const answeredCount = user && assessment ? Math.min(assessment.current_index, total) : Math.max(indexNum - 1, 0);
+  const total = 23;
+  const answeredCount = Math.max(indexNum - 1, 0);
   const progressPct = Math.round((answeredCount / total) * 100);
   const isLast = indexNum >= total;
 
   const handlePrev = () => {
-    if (indexNum > 1) navigate(`/assessment/question/${indexNum - 1}`);
+    if (indexNum > 1) {
+      setSelected(null); // Clear selection when going back
+      navigate(`/assessment/question/${indexNum - 1}`);
+    }
   };
 
   const handleNext = async () => {
@@ -102,38 +98,37 @@ useEffect(() => {
     }
     setBusy(true);
     try {
-      if (user && assessment) {
-        const sb: any = supabase;
-        // Save response
-        const { error: respErr } = await sb
-          .from("HS_responses")
-          .upsert(
-            { assessment_id: assessment.id, question_id: question.id, option_id: selected },
-            { onConflict: "assessment_id,question_id" }
-          );
-        if (respErr) throw respErr;
+      // Ensure we have an assessment before saving responses
+      let currentAssessment = await guestUserService.getAssessment();
+      if (!currentAssessment) {
+        console.log('No assessment found, creating one...');
+        currentAssessment = await guestUserService.createAssessment();
+        console.log('Created new assessment:', currentAssessment);
+      }
 
-        // Update progress
-        const newIndex = Math.max(assessment.current_index, indexNum);
-        const updates: any = { current_index: newIndex };
-        if (indexNum >= total) {
-          updates.status = "completed";
-          updates.completed_at = new Date().toISOString();
+      // Guest mode: store selection in database
+      try {
+        await guestUserService.saveResponse(question.id, selected);
+        
+        // For the last question, mark as completed with current index
+        // For other questions, mark as in_progress with next index
+        if (isLast) {
+          await guestUserService.updateAssessmentProgress(indexNum, 'completed');
+        } else {
+          await guestUserService.updateAssessmentProgress(indexNum + 1, 'in_progress');
         }
-        const { error: updErr } = await sb
-          .from("HS_assessments")
-          .update(updates)
-          .eq("id", assessment.id);
-        if (updErr) throw updErr;
-      } else {
-        // Guest mode: store selection locally
+      } catch (error) {
+        console.error('Error saving response:', error);
+        // Fallback to localStorage
         localStorage.setItem(`guest_answer_${indexNum}`, selected);
       }
 
       if (isLast) {
-        toast({ title: "All done!", description: "Assessment completed." });
-        navigate("/assessment");
+        toast({ title: "All done!", description: "Assessment completed. Redirecting to results..." });
+        navigate("/assessment/results");
       } else {
+        // Clear selection before navigating to next question
+        setSelected(null);
         navigate(`/assessment/question/${indexNum + 1}`);
       }
     } catch (err: any) {
@@ -152,38 +147,85 @@ useEffect(() => {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-peaceful flex items-center justify-center p-4">
-      <Card className="w-full max-w-3xl shadow-healing border-0">
-        <CardHeader>
-          <CardTitle as-child>
-            <h1 className="text-2xl font-bold">{question.title}</h1>
-          </CardTitle>
-          <CardDescription>
-            {question.description}
-            <span className="ml-2 text-xs uppercase tracking-wide text-accent-foreground bg-accent px-2 py-1 rounded-full">{question.category}</span>
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div>
-            <div className="flex justify-between text-sm text-muted-foreground mb-2">
-              <span>Question {indexNum} of {total}</span>
-              <span>{progressPct}%</span>
+    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center p-4">
+      <Card className="w-full max-w-4xl shadow-2xl border-0 bg-white/80 backdrop-blur-sm">
+        <CardHeader className="text-center pb-6">
+          <div className="mb-4">
+            <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 border border-blue-200">
+              <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              {question.category.charAt(0).toUpperCase() + question.category.slice(1)} Assessment
             </div>
-            <Progress value={progressPct} />
+          </div>
+          <CardTitle as-child>
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent leading-tight">
+              {question.title}
+            </h1>
+          </CardTitle>
+          {question.description && (
+            <CardDescription className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+              {question.description}
+            </CardDescription>
+          )}
+        </CardHeader>
+        
+        <CardContent className="space-y-8 px-8">
+          {/* Progress Section */}
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-100">
+            <div className="flex justify-between text-sm font-medium text-blue-700 mb-3">
+              <span>Question {indexNum} of {total}</span>
+              <span>{progressPct}% Complete</span>
+            </div>
+            <Progress value={progressPct} className="h-3 bg-blue-100" />
+            <div className="mt-2 text-xs text-blue-600">
+              {answeredCount} questions answered • {total - answeredCount} remaining
+            </div>
           </div>
 
-          <RadioGroup value={selected ?? undefined} onValueChange={setSelected} className="space-y-3">
-            {options.map((opt) => (
-              <div key={opt.id} className="flex items-center space-x-3 rounded-lg border border-border p-3 hover:bg-muted/50">
-                <RadioGroupItem id={opt.id} value={opt.id} />
-                <Label htmlFor={opt.id} className="cursor-pointer text-base">{opt.label}</Label>
-              </div>
-            ))}
-          </RadioGroup>
+          {/* Options Section */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-gray-800 text-center mb-6">
+              Select the option that best describes you:
+            </h3>
+            
+            <Select value={selected ?? undefined} onValueChange={setSelected}>
+              <SelectTrigger className="w-full h-16 text-base border-2 border-gray-200 hover:border-blue-300 focus:border-blue-500">
+                <SelectValue placeholder="Select the option that best describes you" />
+              </SelectTrigger>
+              <SelectContent>
+                {options.map((opt) => (
+                  <SelectItem key={opt.id} value={opt.id} className="py-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-base font-medium text-gray-800">{opt.label}</span>
+                      {opt.value && (
+                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">
+                          Score: {opt.value}
+                        </span>
+                      )}
+                    </div>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
 
-          <div className="flex justify-between pt-2">
-            <Button variant="outline" onClick={handlePrev} disabled={indexNum <= 1}>Back</Button>
-            <Button className="bg-gradient-healing" onClick={handleNext} disabled={busy || !selected}>{isLast ? "Finish" : "Next"}</Button>
+          {/* Navigation Buttons */}
+          <div className="flex justify-between pt-6 border-t border-gray-100">
+            <Button 
+              variant="outline" 
+              onClick={handlePrev} 
+              disabled={indexNum <= 1}
+              className="px-8 py-3 text-base font-medium border-2 hover:bg-gray-50"
+            >
+              ← Previous
+            </Button>
+            
+            <Button 
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 text-base font-medium shadow-lg hover:shadow-xl transition-all duration-300" 
+              onClick={handleNext} 
+              disabled={busy || !selected}
+            >
+              {isLast ? "🎯 Complete Assessment" : "Next Question →"}
+            </Button>
           </div>
         </CardContent>
       </Card>
