@@ -468,6 +468,29 @@ export type Database = {
         Args: Record<PropertyKey, never>
         Returns: string
       }
+      get_user_assessment_summary: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          id: string
+          assessment_id: string
+          user_id: string
+          guest_id: string
+          assessment_date: string
+          overall_total_score: number
+          overall_percentage: number
+          overall_grade: string
+          overall_level: string
+          health_percentage: number
+          wealth_percentage: number
+          relationships_percentage: number
+          assessment_status: Database["public"]["Enums"]["hs_assessment_status"]
+          completed_at: string
+          age: number
+          gender: string
+          occupation: string
+          location: string
+        }[]
+      }
       set_guest_session_context: {
         Args: { guest_session_id: string }
         Returns: undefined
