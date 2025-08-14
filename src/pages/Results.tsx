@@ -1107,39 +1107,52 @@ const Results = () => {
                 <Button 
                   onClick={async () => {
                     try {
-                      console.log('🧪 Testing available Gemini models...');
-                      const { available, error } = await recommendationService.testAvailableModels();
+                      console.log('🧪 Testing edge function connectivity...');
+                      
+                      // Test edge function connectivity
+                      const { data, error } = await supabase.functions.invoke('generate-recommendations', {
+                        body: {
+                          scores: { 
+                            health: { total: 1, max: 4, percentage: 25, components: {} },
+                            wealth: { total: 1, max: 3, percentage: 33, components: {} },
+                            relationships: { total: 1, max: 3, percentage: 33, components: {} },
+                            overall: { total: 3, max: 10, percentage: 30, grade: 'D', level: 'Beginner' }
+                          },
+                          userProfile: { age: 30, occupation: 'Test' },
+                          responses: []
+                        }
+                      });
                       
                       if (error) {
-                        console.error('❌ Model testing failed:', error);
+                        console.error('❌ Edge function test failed:', error);
                         toast({
-                          title: "Model Testing Failed",
-                          description: error,
+                          title: "Edge Function Test Failed",
+                          description: error.message || 'Unknown error',
                           variant: "destructive"
                         });
                         return;
                       }
                       
-                      console.log('✅ Available models:', available);
+                      console.log('✅ Edge function response:', data);
                       
-                      if (available.length === 0) {
+                      if (data?.recommendations) {
                         toast({
-                          title: "No Models Available",
-                          description: "No Gemini models are accessible with your API key",
-                          variant: "destructive"
+                          title: "Edge Function Working",
+                          description: `Successfully generated ${data.recommendations.length} test recommendations`,
+                          variant: "default"
                         });
                       } else {
                         toast({
-                          title: "Models Available",
-                          description: `Found ${available.length} accessible models: ${available.join(', ')}`,
-                          variant: "default"
+                          title: "Edge Function Issue",
+                          description: "Function responded but no recommendations received",
+                          variant: "destructive"
                         });
                       }
                       
                     } catch (error) {
-                      console.error('❌ Model testing error:', error);
+                      console.error('❌ Edge function test error:', error);
                       toast({
-                        title: "Model Testing Error",
+                        title: "Edge Function Test Error",
                         description: error instanceof Error ? error.message : 'Unknown error',
                         variant: "destructive"
                       });
@@ -1147,14 +1160,14 @@ const Results = () => {
                   }}
                   className="bg-gradient-to-r from-green-600 to-blue-600 text-white px-6 py-3 mr-4"
                 >
-                  🔍 Test Available Gemini Models
+                  🔍 Test Edge Function Connection
                 </Button>
                 
                 <Button 
                   onClick={async () => {
                     if (!scores) return;
                     
-                                          console.log('🧪 Manual Gemini API test...');
+                    console.log('🧪 Manual AI recommendations test...');
                     try {
                       setLoadingAiRecommendations(true);
                       setAiRecommendationsError(null);
