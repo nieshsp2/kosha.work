@@ -37,10 +37,8 @@ const Navbar = () => {
           {/* CTA Button */}
           <div className="hidden md:flex items-center">
             <Button 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 font-semibold"
-              onClick={() => navigate('/user-info')}
-            >
-              Demo Platform
+              className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 font-semibold">
+              Wellbeing Dashboard
             </Button>
           </div>
 
@@ -61,9 +59,6 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-card border border-border rounded-lg mt-2">
-              <a href="#market" className="block px-3 py-2 text-muted-foreground hover:text-foreground transition-colors">
-                Market
-              </a>
               <a href="#solution" className="block px-3 py-2 text-muted-foreground hover:text-foreground transition-colors">
                 Solution
               </a>
@@ -72,10 +67,8 @@ const Navbar = () => {
               </a>
               <div className="px-3 py-2">
                 <Button 
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
-                  onClick={() => navigate('/user-info')}
-                >
-                  Demo Platform
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                  Wellbeing Dashboard
                 </Button>
               </div>
             </div>
