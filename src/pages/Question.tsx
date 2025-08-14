@@ -177,11 +177,11 @@ const Question = () => {
         {/* Progress Bar */}
         <div className="mb-6">
           <div className="flex justify-center mb-3">
-            <div className="bg-card/10 border border-primary/20 rounded-full px-3 py-1.5 backdrop-blur-sm">
+            <div className="bg-card/50 border border-primary/30 rounded-full px-3 py-1.5 backdrop-blur-sm">
               <span className="text-primary font-medium text-sm">Question {indexNum} of {total}</span>
             </div>
           </div>
-          <div className="w-full bg-muted/20 rounded-full h-2 backdrop-blur-sm">
+          <div className="w-full bg-muted/30 rounded-full h-2 backdrop-blur-sm">
             <div 
               className="bg-gradient-kosha h-2 rounded-full transition-all duration-300 shadow-glow" 
               style={{ width: `${progressPct}%` }}
@@ -191,7 +191,7 @@ const Question = () => {
 
         {/* Category Header - Show when starting a new category */}
         {isFirstQuestionInCategory && currentCategoryInfo && (
-          <Card className="bg-gradient-kosha/20 border border-primary/30 shadow-kosha mb-4 backdrop-blur-sm">
+          <Card className="bg-card/40 border border-primary/40 shadow-kosha mb-4 backdrop-blur-sm">
             <CardContent className="p-3 md:p-4 text-center">
               <h2 className="text-lg md:text-xl font-bold text-foreground mb-1">
                 {currentCategoryInfo.title}
@@ -207,7 +207,7 @@ const Question = () => {
         )}
 
         {/* Main Question Card */}
-        <Card className="bg-card/20 border border-primary/20 shadow-kosha backdrop-blur-sm">
+        <Card className="bg-card/40 border border-primary/30 shadow-kosha backdrop-blur-sm">
           <CardContent className="p-4 md:p-6">
 
             {/* Question Icon */}
@@ -237,12 +237,12 @@ const Question = () => {
             {/* Select Dropdown */}
             <div className="mb-6">
               <Select value={selected ?? undefined} onValueChange={setSelected}>
-                <SelectTrigger className="w-full h-10 md:h-12 text-sm md:text-base bg-card/30 border-2 border-primary/30 hover:border-primary focus:border-primary text-foreground rounded-lg backdrop-blur-sm">
+                <SelectTrigger className="w-full h-10 md:h-12 text-sm md:text-base bg-card/50 border-2 border-primary/40 hover:border-primary focus:border-primary text-foreground rounded-lg backdrop-blur-sm">
                   <SelectValue placeholder="select an option" className="text-muted-foreground" />
                 </SelectTrigger>
-                <SelectContent className="bg-card border border-primary/20 shadow-kosha rounded-lg max-h-64 overflow-y-auto backdrop-blur-sm">
+                <SelectContent className="bg-card border border-primary/30 shadow-kosha rounded-lg max-h-64 overflow-y-auto backdrop-blur-sm">
                   {options.map((opt) => (
-                    <SelectItem key={opt.id} value={opt.id} className="py-3 px-4 hover:bg-primary/10 cursor-pointer text-foreground">
+                    <SelectItem key={opt.id} value={opt.id} className="py-3 px-4 hover:bg-primary/20 cursor-pointer text-foreground">
                       <div className="font-medium text-sm">
                         {opt.label}
                       </div>
@@ -258,7 +258,7 @@ const Question = () => {
                 variant="outline" 
                 onClick={handlePrev} 
                 disabled={indexNum <= 1}
-                className="px-4 md:px-6 py-2 text-sm font-medium bg-transparent border-primary/30 text-muted-foreground hover:bg-primary/10 hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed rounded-lg"
+                className="px-4 md:px-6 py-2 text-sm font-medium bg-transparent border-primary/40 text-muted-foreground hover:bg-primary/20 hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed rounded-lg"
               >
                 ← Previous
               </Button>

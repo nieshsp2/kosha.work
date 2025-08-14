@@ -44,7 +44,7 @@ All colors MUST be HSL.
     /* Kosha Gradients */
     --gradient-kosha: linear-gradient(135deg, hsl(150 60% 35%), hsl(170 50% 45%));
     --gradient-kosha-alt: linear-gradient(90deg, hsl(150 60% 35%), hsl(180 60% 40%));
-    --gradient-dark: linear-gradient(135deg, hsl(180 20% 10%), hsl(150 30% 8%));
+    --gradient-dark: linear-gradient(135deg, hsl(180 20% 15%), hsl(150 30% 18%));
 
     /* Shadows */
     --shadow-kosha: 0 10px 40px -10px hsl(150 60% 35% / 0.3);
@@ -106,13 +106,13 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 180 20% 8%;
-    --foreground: 150 20% 90%;
+    --background: 180 20% 12%;
+    --foreground: 150 20% 95%;
 
-    --card: 180 20% 12%;
-    --card-foreground: 150 20% 90%;
+    --card: 180 20% 18%;
+    --card-foreground: 150 20% 95%;
 
-    --popover: 180 20% 12%;
+    --popover: 180 20% 18%;
     --popover-foreground: 150 20% 90%;
 
     --primary: 150 60% 50%;
