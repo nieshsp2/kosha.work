@@ -1,5 +1,66 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { AssessmentScoreData, ScoreBreakdown } from './assessmentScoreService';
+// Types moved locally
+export interface AssessmentScoreData {
+  assessment_id: string;
+  total_questions_answered: number;
+  overall_total_score: number;
+  overall_max_score: number;
+  // Add other fields as needed
+}
+
+export interface ScoreBreakdown {
+  health: {
+    total: number;
+    max: number;
+    percentage: number;
+    components: {
+      nutrition: number;
+      digestion: number;
+      exercise: number;
+      water: number;
+      sunlight: number;
+      sleep: number;
+      outdoorAir: number;
+      oralCare: number;
+      skinCare: number;
+    };
+  };
+  wealth: {
+    total: number;
+    max: number;
+    percentage: number;
+    components: {
+      quality: number;
+      quantity: number;
+      diversity: number;
+      workplace: number;
+      creativity: number;
+      restRelaxation: number;
+    };
+  };
+  relationships: {
+    total: number;
+    max: number;
+    percentage: number;
+    components: {
+      mentalWellbeing: number;
+      emotionalWellbeing: number;
+      partner: number;
+      parents: number;
+      children: number;
+      relatives: number;
+      friends: number;
+      universalOneness: number;
+    };
+  };
+  overall: {
+    total: number;
+    max: number;
+    percentage: number;
+    grade: string;
+    level?: string;
+  };
+}
 
 // Types for recommendations
 export interface Recommendation {
