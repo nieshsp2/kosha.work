@@ -84,6 +84,31 @@ const Question = () => {
   const progressPct = Math.round((answeredCount / total) * 100);
   const isLast = indexNum >= total;
 
+  // Category information with descriptions
+  const categoryInfo = {
+    health: {
+      title: "🏃‍♀️ HEALTH FOUNDATION",
+      subtitle: "(40% of your wellbeing score)",
+      description: '"Your body is your temple, but even temples need a good cleaning crew!"',
+      firstQuestion: 1
+    },
+    wealth: {
+      title: "💰 WEALTH & WORK",
+      subtitle: "(30% of your wellbeing score)",
+      description: '"Money can\'t buy happiness, but poverty can definitely rent you some stress!"',
+      firstQuestion: 10
+    },
+    relationships: {
+      title: "💕 RELATIONSHIPS & INNER WORLD",
+      subtitle: "(30% of your wellbeing score)",
+      description: '"We\'re only as healthy as our relationships - including the one with ourselves!"',
+      firstQuestion: 16
+    }
+  };
+
+  const currentCategoryInfo = question ? categoryInfo[question.category] : null;
+  const isFirstQuestionInCategory = currentCategoryInfo && indexNum === currentCategoryInfo.firstQuestion;
+
   const handlePrev = () => {
     if (indexNum > 1) {
       setSelected(null); // Clear selection when going back
@@ -163,6 +188,23 @@ const Question = () => {
             ></div>
           </div>
         </div>
+
+        {/* Category Header - Show when starting a new category */}
+        {isFirstQuestionInCategory && currentCategoryInfo && (
+          <Card className="bg-gradient-to-r from-purple-900/50 to-blue-900/50 border border-purple-500/30 shadow-2xl mb-8">
+            <CardContent className="p-6 md:p-8 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
+                {currentCategoryInfo.title}
+              </h2>
+              <p className="text-purple-300 text-lg md:text-xl font-medium mb-4">
+                {currentCategoryInfo.subtitle}
+              </p>
+              <p className="text-gray-300 text-lg md:text-xl italic max-w-2xl mx-auto">
+                {currentCategoryInfo.description}
+              </p>
+            </CardContent>
+          </Card>
+        )}
 
         {/* Main Question Card */}
         <Card className="bg-gray-900 border border-gray-700 shadow-2xl">
