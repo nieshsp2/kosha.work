@@ -846,7 +846,7 @@ const Results = () => {
                           {recommendation.priority.charAt(0).toUpperCase() + recommendation.priority.slice(1)} Priority
                         </Badge>
                       </div>
-                      <CardTitle className="text-lg">{recommendation.title}</CardTitle>
+                                              <CardTitle className="!text-lg !font-semibold !text-gray-900">{recommendation.title}</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <p className="text-gray-600 text-sm">{recommendation.description}</p>
@@ -869,7 +869,7 @@ const Results = () => {
                       </div>
                       
                       <div className="pt-2">
-                        <Badge variant="outline" className="text-xs">
+                        <Badge variant="outline" className="!text-xs !font-semibold !text-gray-900 !border-gray-600 !bg-gray-100">
                           {recommendation.nudgeType.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
                         </Badge>
                       </div>
