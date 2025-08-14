@@ -249,7 +249,7 @@ const Question = () => {
                 {question.title}
               </h2>
               {question.description && (
-                <p className="text-sm text-gray-600 mb-3 italic bg-blue-50 px-3 py-2 rounded-lg border-l-4 border-blue-400">
+                <p className="text-sm text-gray-600 mb-3 italic bg-blue-50/50 px-4 py-3 rounded-lg border border-blue-200/50">
                   {question.description}
                 </p>
               )}
