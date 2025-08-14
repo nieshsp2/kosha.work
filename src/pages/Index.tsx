@@ -1,20 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { Rocket, AlertTriangle, BarChart3, Brain, Target, Users, Building2, GraduationCap, Heart, TrendingUp, CheckCircle, Play } from "lucide-react";
+import { BarChart3, Building2, TrendingUp, CheckCircle, Play, Eye, User, Shield, DollarSign, Users, Briefcase, BookOpen, Activity } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 import heroImage from "@/assets/hwr-hero.jpg";
-import behaviorSystemImage from "@/assets/behavior-system.jpg";
-import corporateWellnessImage from "@/assets/corporate-wellness.jpg";
-import individualWellnessImage from "@/assets/individual-wellness.jpg";
 
 const Index = () => {
   const navigate = useNavigate();
 
-  const handleStartAssessment = () => {
+  const handleStartDemo = () => {
     navigate('/user-info');
   };
 
@@ -29,12 +26,12 @@ const Index = () => {
           <img 
             src={heroImage} 
             alt="Human Behavior Operating System Visualization" 
-            className="w-full h-full object-cover opacity-50"
+            className="w-full h-full object-cover opacity-70"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-green-900/40 to-black/80"></div>
         </div>
 
-        {/* Floating Particles - matching the original exactly */}
+        {/* Floating Particles */}
         <div className="absolute top-1/4 left-10 w-2 h-2 bg-green-400 rounded-full animate-pulse opacity-60"></div>
         <div className="absolute top-1/3 right-20 w-3 h-3 bg-blue-400 rounded-full animate-pulse opacity-40" style={{ animationDelay: '0.5s' }}></div>
         <div className="absolute bottom-1/3 left-1/4 w-1 h-1 bg-purple-400 rounded-full animate-pulse opacity-50" style={{ animationDelay: '1s' }}></div>
@@ -43,54 +40,70 @@ const Index = () => {
         {/* Content */}
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-5xl mx-auto">
-            {/* Badge with rocket icon */}
-            <Badge className="mb-8 bg-black/30 text-white border border-gray-600 hover:bg-black/40 px-6 py-2 text-base backdrop-blur-sm">
-              <Rocket className="w-4 h-4 mr-2" />
-              🚀 The World's First Human Behavior Operating System
+            {/* Badge */}
+            <Badge className="mb-8 bg-green-500/20 text-green-400 border border-green-500/30 px-6 py-2 text-base backdrop-blur-sm">
+              🧬 RLUSD-Native B2B Wellbeing Intelligence Platform
             </Badge>
 
-            {/* Main Heading with exact gradient colors */}
+            {/* Main Heading */}
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
-              Break Free from the{" "}
-              <span className="bg-gradient-to-r from-green-400 via-yellow-400 via-orange-400 to-pink-400 bg-clip-text text-transparent">
-                Performance Death Spiral
+              Human Behaviour{" "}
+              <span className="bg-gradient-to-r from-green-400 via-yellow-400 to-pink-400 bg-clip-text text-transparent">
+                Operating System
               </span>
             </h1>
 
             {/* Subheading */}
             <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
-              73% of professionals are stuck in cascading failures across health, wealth, and relationships. 
-              HWR architechts solutions instead of just tracking symptoms.
+              First blockchain-powered B2B platform turning employee wellbeing into measurable assets.{" "}
+              <span className="text-green-400 font-semibold">87% of corporate programs fail</span> - we solve 
+              compliance, risk assessment, and premium optimization.
             </p>
 
-            {/* CTA Button with gradient background exactly like original */}
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white px-12 py-6 text-xl font-semibold mb-16 shadow-2xl border-0"
-              onClick={handleStartAssessment}
-            >
-              <Play className="w-5 h-5 mr-3" />
-              Start Your HWR Assessment
-            </Button>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+              <Button 
+                size="lg" 
+                className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 text-lg font-semibold"
+                onClick={handleStartDemo}
+              >
+                <Eye className="w-5 h-5 mr-3" />
+                See Platform Demo
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="border-gray-600 text-white hover:bg-gray-800 px-8 py-4 text-lg"
+              >
+                <BarChart3 className="w-5 h-5 mr-3" />
+                View Market Data
+              </Button>
+            </div>
 
-            {/* Stats Cards - exactly matching the original layout */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {/* Stats Cards */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
               <Card className="bg-black/30 border border-gray-700 backdrop-blur-sm">
-                <CardContent className="p-8 text-center">
-                  <div className="text-5xl font-bold text-green-400 mb-3">73%</div>
-                  <div className="text-gray-300 text-lg">Professionals in Death Spirals</div>
+                <CardContent className="p-6 text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">B2B</div>
+                  <div className="text-gray-300 text-sm">Enterprise Focus</div>
                 </CardContent>
               </Card>
               <Card className="bg-black/30 border border-gray-700 backdrop-blur-sm">
-                <CardContent className="p-8 text-center">
-                  <div className="text-5xl font-bold text-yellow-400 mb-3">3x</div>
-                  <div className="text-gray-300 text-lg">Faster Problem Resolution</div>
+                <CardContent className="p-6 text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-yellow-400 mb-2">6:1</div>
+                  <div className="text-gray-300 text-sm">Proven Wellbeing ROI</div>
                 </CardContent>
               </Card>
               <Card className="bg-black/30 border border-gray-700 backdrop-blur-sm">
-                <CardContent className="p-8 text-center">
-                  <div className="text-5xl font-bold text-purple-400 mb-3">360°</div>
-                  <div className="text-gray-300 text-lg">Holistic Behavior Analysis</div>
+                <CardContent className="p-6 text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-pink-400 mb-2">87%</div>
+                  <div className="text-gray-300 text-sm">Programs Fail (Poor Measurement)</div>
+                </CardContent>
+              </Card>
+              <Card className="bg-black/30 border border-gray-700 backdrop-blur-sm">
+                <CardContent className="p-6 text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-green-400 mb-2">150</div>
+                  <div className="text-gray-300 text-sm">Countries Available</div>
                 </CardContent>
               </Card>
             </div>
@@ -98,317 +111,241 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Crisis Section */}
-      <section className="py-20 bg-gradient-to-b from-black to-gray-900">
+      {/* Corporate Wellbeing Crisis Section */}
+      <section id="market" className="py-20 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <Badge className="mb-8 bg-red-500/20 text-red-400 border border-red-500/30 px-4 py-2">
-              <AlertTriangle className="w-4 h-4 mr-2" />
-              ⚠️ The Crisis
-            </Badge>
-            
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white">
-              The Distributed System Failure
+          <div className="max-w-6xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+              The Corporate Wellbeing Crisis
             </h2>
             
-            <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-              Current wellness solutions are like trying to fix a car by only checking the oil. 
-              They're fragmented apps tracking symptoms while the real problems cascade through your entire life system.
+            <h3 className="text-3xl md:text-4xl font-bold mb-8 text-red-400">
+              $150B Lost Productivity Emergency
+            </h3>
+            
+            <p className="text-xl text-gray-300 mb-16 max-w-4xl mx-auto leading-relaxed">
+              Lost productivity due to absenteeism related to physical and mental health is expected to cross USD 150 billion, 
+              making wellbeing measurement a fiduciary duty for corporate boards.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
               <Card className="bg-gray-800/50 border border-red-500/30">
                 <CardContent className="p-6">
-                  <TrendingUp className="w-8 h-8 text-red-400 mb-4" />
-                  <h3 className="text-xl font-bold mb-3 text-white">Wealth Stress</h3>
-                  <p className="text-gray-300">Financial pressure creates cortisol spikes that sabotage decision-making and relationships</p>
+                  <TrendingUp className="w-8 h-8 text-red-400 mb-4 mx-auto" />
+                  <h4 className="text-xl font-bold mb-3 text-white">Market Size Gap</h4>
+                  <p className="text-gray-300 mb-4">$69B market growing to $120B by 2032</p>
+                  <p className="text-sm text-red-400">Yet 87% of programs fail due to poor engagement and no outcome measurement</p>
                 </CardContent>
               </Card>
               
               <Card className="bg-gray-800/50 border border-orange-500/30">
                 <CardContent className="p-6">
-                  <Heart className="w-8 h-8 text-orange-400 mb-4" />
-                  <h3 className="text-xl font-bold mb-3 text-white">Health Decline</h3>
-                  <p className="text-gray-300">Poor health impacts earning potential and strains personal relationships</p>
+                  <BarChart3 className="w-8 h-8 text-orange-400 mb-4 mx-auto" />
+                  <h4 className="text-xl font-bold mb-3 text-white">Measurement Crisis</h4>
+                  <p className="text-gray-300 mb-4">No comprehensive wellbeing ROI tracking</p>
+                  <p className="text-sm text-orange-400">Boards can't justify spending without measurable outcomes</p>
                 </CardContent>
               </Card>
               
               <Card className="bg-gray-800/50 border border-yellow-500/30">
                 <CardContent className="p-6">
-                  <Users className="w-8 h-8 text-yellow-400 mb-4" />
-                  <h3 className="text-xl font-bold mb-3 text-white">Relationship Breakdown</h3>
-                  <p className="text-gray-300">Isolation reduces support systems needed for career growth and health maintenance</p>
+                  <Users className="w-8 h-8 text-yellow-400 mb-4 mx-auto" />
+                  <h4 className="text-xl font-bold mb-3 text-white">Engagement Failure</h4>
+                  <p className="text-gray-300 mb-4">Fragmented solutions, poor adoption</p>
+                  <p className="text-sm text-yellow-400">Employees need holistic, not siloed approaches</p>
                 </CardContent>
               </Card>
             </div>
 
-            <div className="text-center">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white px-8 py-4 text-lg"
-                onClick={handleStartAssessment}
-              >
-                Break the Cycle with HWR
-              </Button>
-            </div>
+            <Button 
+              size="lg" 
+              className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 text-lg"
+              onClick={handleStartDemo}
+            >
+              See Kosha's Solution
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* What is HWR Section */}
-      <section className="py-20 bg-gray-900">
+      {/* Meet Kosha Section */}
+      <section id="solution" className="py-20 bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <Badge className="mb-8 bg-blue-500/20 text-blue-400 border border-blue-500/30 px-4 py-2">
-              Revolutionary Technology
+            <Badge className="mb-8 bg-blue-500/20 text-blue-400 border border-blue-500/30 px-4 py-2 mx-auto block w-fit">
+              Blockchain-Powered B2B Intelligence
             </Badge>
             
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white">
-              What is a HWR?
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-white">
+              Meet Kosha
             </h2>
             
-            <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-              Your <strong className="text-white">Holistic Well-being Report</strong> that assesses your health, wealth, and relationships through the lens of behavioral science. 
-              It's not just another wellness app—it's your personal Human Behavior Operating System.
+            <p className="text-xl text-gray-300 mb-16 text-center leading-relaxed max-w-4xl mx-auto">
+              The world's first <strong className="text-white">blockchain-powered B2B holistic wellbeing intelligence platform</strong> addressing 
+              three critical corporate segments with RLUSD-native payments and measurable ROI.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
               <Card className="bg-gray-800/50 border border-blue-500/30">
-                <CardContent className="p-6">
-                  <Brain className="w-8 h-8 text-blue-400 mb-4" />
-                  <h4 className="text-lg font-bold mb-3 text-white">Behavioral Pattern Analysis</h4>
-                  <p className="text-gray-300">Deep-dive into your decision-making patterns and behavioral triggers</p>
+                <CardContent className="p-8 text-center">
+                  <Shield className="w-12 h-12 text-blue-400 mb-6 mx-auto" />
+                  <h4 className="text-xl font-bold mb-4 text-white">HR Compliance & Governance</h4>
+                  <p className="text-gray-300">Holistic Wellbeing Reports providing measurable wellbeing ROI for corporate governance</p>
                 </CardContent>
               </Card>
               
               <Card className="bg-gray-800/50 border border-green-500/30">
-                <CardContent className="p-6">
-                  <Target className="w-8 h-8 text-green-400 mb-4" />
-                  <h4 className="text-lg font-bold mb-3 text-white">Customized Action Plans</h4>
-                  <p className="text-gray-300">Personalized recommendations based on your unique behavioral profile</p>
+                <CardContent className="p-8 text-center">
+                  <DollarSign className="w-12 h-12 text-green-400 mb-6 mx-auto" />
+                  <h4 className="text-xl font-bold mb-4 text-white">Loans Risk Assessment</h4>
+                  <p className="text-gray-300">Behavioral insights for enhanced KYC 2.0 and customer profiling</p>
                 </CardContent>
               </Card>
               
               <Card className="bg-gray-800/50 border border-purple-500/30">
-                <CardContent className="p-6">
-                  <BarChart3 className="w-8 h-8 text-purple-400 mb-4" />
-                  <h4 className="text-lg font-bold mb-3 text-white">Systemic Integration</h4>
-                  <p className="text-gray-300">See how your health, wealth, and relationships interconnect and influence each other</p>
+                <CardContent className="p-8 text-center">
+                  <Activity className="w-12 h-12 text-purple-400 mb-6 mx-auto" />
+                  <h4 className="text-xl font-bold mb-4 text-white">Insurance Premium Optimization</h4>
+                  <p className="text-gray-300">Data-driven insights for accurate risk assessment and premium calculations</p>
                 </CardContent>
               </Card>
             </div>
 
-            <div className="text-center mb-12">
+            <div className="text-center">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-4 text-lg"
-                onClick={handleStartAssessment}
+                className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 text-lg"
+                onClick={handleStartDemo}
               >
-                Start HWR Assessment
+                <Eye className="w-5 h-5 mr-3" />
+                Platform Demo
               </Button>
             </div>
-
-            <div className="text-center">
-              <img 
-                src={behaviorSystemImage} 
-                alt="Human Behavior Operating System Visualization" 
-                className="w-full max-w-4xl mx-auto rounded-2xl"
-              />
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Who Transforms Section */}
-      <section id="clients" className="py-20 bg-black">
+      {/* Kosha Advantage Section */}
+      <section id="advantage" className="py-20 bg-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-white">
-              Who Transforms with HWR?
+            <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center text-white">
+              The Kosha Advantage
             </h2>
-            
-            <p className="text-xl text-gray-300 mb-16 text-center leading-relaxed">
-              From Fortune 500 companies to individuals seeking breakthrough performance, 
-              HWR serves anyone ready to architect their human behavior system.
-            </p>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Enterprise Solutions */}
+              {/* Left Column */}
               <div className="space-y-8">
-                <Card className="bg-gray-800/50 border border-blue-500/30">
-                  <CardContent className="p-8">
-                    <img src={corporateWellnessImage} alt="Corporate Wellness Programs" className="w-full h-48 object-cover rounded-lg mb-6" />
-                    <Badge className="mb-4 bg-blue-500/20 text-blue-400 border border-blue-500/30">Enterprise</Badge>
-                    <h3 className="text-2xl font-bold mb-4 text-white">Corporate Wellness Programs</h3>
-                    <p className="text-gray-300 mb-6">
-                      Enhance employee holistic wellness, reduce burnout, and boost productivity through behavioral insights and personalized wellness strategies.
-                    </p>
-                    <ul className="space-y-2">
-                      <li className="flex items-center text-green-400">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        Reduce healthcare costs by 30%
-                      </li>
-                      <li className="flex items-center text-green-400">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        Increase productivity by 25%
-                      </li>
-                      <li className="flex items-center text-green-400">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        Improve employee retention
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-gray-800/50 border border-purple-500/30">
-                  <CardContent className="p-8">
-                    <Badge className="mb-4 bg-purple-500/20 text-purple-400 border border-purple-500/30">Dating Tech</Badge>
-                    <h3 className="text-2xl font-bold mb-4 text-white">Dating App Integration</h3>
-                    <p className="text-gray-300 mb-6">
-                      Provide comprehensive behavioral matching and differentiate in the crowded dating market with deeper compatibility insights.
-                    </p>
-                    <ul className="space-y-2">
-                      <li className="flex items-center text-green-400">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        Behavioral compatibility scoring
-                      </li>
-                      <li className="flex items-center text-green-400">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        Deeper user insights
-                      </li>
-                      <li className="flex items-center text-green-400">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        Higher match success rates
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
                 <Card className="bg-gray-800/50 border border-green-500/30">
                   <CardContent className="p-8">
-                    <Badge className="mb-4 bg-green-500/20 text-green-400 border border-green-500/30">FinTech</Badge>
-                    <h3 className="text-2xl font-bold mb-4 text-white">Financial Services</h3>
+                    <Badge className="mb-4 bg-green-500/20 text-green-400 border border-green-500/30">Blockchain Native</Badge>
+                    <h3 className="text-2xl font-bold mb-4 text-white">RLUSD Payment Integration</h3>
                     <p className="text-gray-300 mb-6">
-                      Gain deep customer behavioral insights for better risk assessment, personalized financial products, and improved customer relationships.
+                      First platform to offer seamless RLUSD payments for enterprise wellbeing services, ensuring transparent and efficient transactions.
                     </p>
                     <ul className="space-y-2">
                       <li className="flex items-center text-green-400">
                         <CheckCircle className="w-4 h-4 mr-2" />
-                        Enhanced risk profiling
+                        Instant settlement with RLUSD
                       </li>
                       <li className="flex items-center text-green-400">
                         <CheckCircle className="w-4 h-4 mr-2" />
-                        Personalized financial advice
+                        Transparent pricing model
                       </li>
                       <li className="flex items-center text-green-400">
                         <CheckCircle className="w-4 h-4 mr-2" />
-                        Improved customer retention
+                        Global accessibility
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-gray-800/50 border border-blue-500/30">
+                  <CardContent className="p-8">
+                    <Badge className="mb-4 bg-blue-500/20 text-blue-400 border border-blue-500/30">B2B Focus</Badge>
+                    <h3 className="text-2xl font-bold mb-4 text-white">Enterprise-Grade Analytics</h3>
+                    <p className="text-gray-300 mb-6">
+                      Designed specifically for corporate environments with advanced security, compliance, and integration capabilities.
+                    </p>
+                    <ul className="space-y-2">
+                      <li className="flex items-center text-green-400">
+                        <CheckCircle className="w-4 h-4 mr-2" />
+                        SOC 2 Type II compliance
+                      </li>
+                      <li className="flex items-center text-green-400">
+                        <CheckCircle className="w-4 h-4 mr-2" />
+                        API-first architecture
+                      </li>
+                      <li className="flex items-center text-green-400">
+                        <CheckCircle className="w-4 h-4 mr-2" />
+                        White-label solutions
                       </li>
                     </ul>
                   </CardContent>
                 </Card>
               </div>
 
-              {/* Individual & Research Solutions */}
+              {/* Right Column */}
               <div className="space-y-8">
+                <Card className="bg-gray-800/50 border border-purple-500/30">
+                  <CardContent className="p-8">
+                    <Badge className="mb-4 bg-purple-500/20 text-purple-400 border border-purple-500/30">Proven ROI</Badge>
+                    <h3 className="text-2xl font-bold mb-4 text-white">Measurable Business Impact</h3>
+                    <p className="text-gray-300 mb-6">
+                      Track and quantify the financial impact of wellbeing initiatives with comprehensive ROI analytics and reporting.
+                    </p>
+                    <ul className="space-y-2">
+                      <li className="flex items-center text-green-400">
+                        <CheckCircle className="w-4 h-4 mr-2" />
+                        6:1 average ROI demonstrated
+                      </li>
+                      <li className="flex items-center text-green-400">
+                        <CheckCircle className="w-4 h-4 mr-2" />
+                        Real-time impact tracking
+                      </li>
+                      <li className="flex items-center text-green-400">
+                        <CheckCircle className="w-4 h-4 mr-2" />
+                        Custom KPI dashboards
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
                 <Card className="bg-gray-800/50 border border-yellow-500/30">
                   <CardContent className="p-8">
-                    <Badge className="mb-4 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">Education</Badge>
-                    <h3 className="text-2xl font-bold mb-4 text-white">Educational Institutions</h3>
+                    <Badge className="mb-4 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">Global Reach</Badge>
+                    <h3 className="text-2xl font-bold mb-4 text-white">150 Countries Available</h3>
                     <p className="text-gray-300 mb-6">
-                      Enhance student self-awareness and life skills through behavioral insights, preparing them for success in all life domains.
+                      Comprehensive global deployment with localized insights and cultural adaptations for multinational enterprises.
                     </p>
                     <ul className="space-y-2">
                       <li className="flex items-center text-green-400">
                         <CheckCircle className="w-4 h-4 mr-2" />
-                        Student self-awareness programs
+                        Multi-language support
                       </li>
                       <li className="flex items-center text-green-400">
                         <CheckCircle className="w-4 h-4 mr-2" />
-                        Career readiness assessment
+                        Cultural customization
                       </li>
                       <li className="flex items-center text-green-400">
                         <CheckCircle className="w-4 h-4 mr-2" />
-                        Mental health support
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-gray-800/50 border border-red-500/30">
-                  <CardContent className="p-8">
-                    <Badge className="mb-4 bg-red-500/20 text-red-400 border border-red-500/30">Research</Badge>
-                    <h3 className="text-2xl font-bold mb-4 text-white">Longevity & Health Tech Research</h3>
-                    <p className="text-gray-300 mb-6">
-                      Access unprecedented data correlations between health, wealth, and relationships for groundbreaking longevity and health technology research.
-                    </p>
-                    <ul className="space-y-2">
-                      <li className="flex items-center text-green-400">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        Large-scale behavioral data
-                      </li>
-                      <li className="flex items-center text-green-400">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        Cross-domain correlations
-                      </li>
-                      <li className="flex items-center text-green-400">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        Longitudinal studies
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-gray-800/50 border border-pink-500/30">
-                  <CardContent className="p-8">
-                    <img src={individualWellnessImage} alt="Individual Wellness Journey" className="w-full h-48 object-cover rounded-lg mb-6" />
-                    <Badge className="mb-4 bg-pink-500/20 text-pink-400 border border-pink-500/30">Personal</Badge>
-                    <h3 className="text-2xl font-bold mb-4 text-white">Individual Optimization</h3>
-                    <p className="text-gray-300 mb-6">
-                      Transform your life with personalized insights and actionable recommendations for holistic wellbeing and peak performance.
-                    </p>
-                    <ul className="space-y-2">
-                      <li className="flex items-center text-green-400">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        Personalized action plans
-                      </li>
-                      <li className="flex items-center text-green-400">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        Behavioral breakthrough insights
-                      </li>
-                      <li className="flex items-center text-green-400">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        Life optimization strategies
+                        Local compliance ready
                       </li>
                     </ul>
                   </CardContent>
                 </Card>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Final CTA Section */}
-      <section className="py-20 bg-gradient-to-b from-black to-gray-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white">
-              Ready to Architect Your Human Behavior System?
-            </h2>
-            
-            <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-              Join thousands who've broken free from the performance death spiral and designed their optimal life system.
-            </p>
-
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white px-12 py-6 text-xl font-semibold shadow-2xl"
-              onClick={handleStartAssessment}
-            >
-              <Play className="w-6 h-6 mr-3" />
-              Start Your HWR Assessment Now
-            </Button>
+            <div className="text-center mt-16">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white px-12 py-6 text-xl font-semibold"
+                onClick={handleStartDemo}
+              >
+                Start Your Enterprise Journey
+              </Button>
+            </div>
           </div>
         </div>
       </section>

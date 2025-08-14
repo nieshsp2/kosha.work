@@ -17,30 +17,30 @@ const Navbar = () => {
               <div className="w-4 h-4 bg-black rounded-sm"></div>
             </div>
             <span className="text-xl font-bold text-white">
-              HWR by <span className="text-green-400">Kosha</span>
+              <span className="text-green-400">Kosha</span>
             </span>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#features" className="text-gray-300 hover:text-white transition-colors">
-              Features
+            <a href="#market" className="text-gray-300 hover:text-white transition-colors">
+              Market
             </a>
-            <a href="#clients" className="text-gray-300 hover:text-white transition-colors">
-              Clients
+            <a href="#solution" className="text-gray-300 hover:text-white transition-colors">
+              Solution
             </a>
-            <a href="#about" className="text-gray-300 hover:text-white transition-colors">
-              About
+            <a href="#advantage" className="text-gray-300 hover:text-white transition-colors">
+              Advantage
             </a>
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center">
             <Button 
-              className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white px-6 py-2 font-semibold"
-              onClick={() => navigate('/assessment')}
+              className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 font-semibold"
+              onClick={() => navigate('/user-info')}
             >
-              Start Assessment
+              Demo Platform
             </Button>
           </div>
 
@@ -61,21 +61,21 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black border border-gray-800 rounded-lg mt-2">
-              <a href="#features" className="block px-3 py-2 text-gray-300 hover:text-white transition-colors">
-                Features
+              <a href="#market" className="block px-3 py-2 text-gray-300 hover:text-white transition-colors">
+                Market
               </a>
-              <a href="#clients" className="block px-3 py-2 text-gray-300 hover:text-white transition-colors">
-                Clients
+              <a href="#solution" className="block px-3 py-2 text-gray-300 hover:text-white transition-colors">
+                Solution
               </a>
-              <a href="#about" className="block px-3 py-2 text-gray-300 hover:text-white transition-colors">
-                About
+              <a href="#advantage" className="block px-3 py-2 text-gray-300 hover:text-white transition-colors">
+                Advantage
               </a>
               <div className="px-3 py-2">
                 <Button 
-                  className="w-full bg-gradient-to-r from-green-500 to-blue-500 text-white"
-                  onClick={() => navigate('/assessment')}
+                  className="w-full bg-green-500 hover:bg-green-600 text-white"
+                  onClick={() => navigate('/user-info')}
                 >
-                  Start Assessment
+                  Demo Platform
                 </Button>
               </div>
             </div>
