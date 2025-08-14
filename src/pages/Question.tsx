@@ -172,18 +172,18 @@ const Question = () => {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-dark text-foreground flex items-center justify-center p-4">
+    <main className="min-h-screen bg-gray-50 text-gray-900 flex items-center justify-center p-4">
       <div className="w-full max-w-2xl">
         {/* Progress Bar */}
         <div className="mb-6">
           <div className="flex justify-center mb-3">
-            <div className="bg-card/50 border border-primary/30 rounded-full px-3 py-1.5 backdrop-blur-sm">
-              <span className="text-primary font-medium text-sm">Question {indexNum} of {total}</span>
+            <div className="bg-white border border-gray-200 rounded-full px-4 py-2 shadow-sm">
+              <span className="text-gray-600 font-medium text-sm">Question {indexNum} of {total}</span>
             </div>
           </div>
-          <div className="w-full bg-muted/30 rounded-full h-2 backdrop-blur-sm">
+          <div className="w-full bg-gray-200 rounded-full h-3">
             <div 
-              className="bg-gradient-kosha h-2 rounded-full transition-all duration-300 shadow-glow" 
+              className="bg-gradient-to-r from-blue-500 to-blue-600 h-3 rounded-full transition-all duration-300 shadow-sm" 
               style={{ width: `${progressPct}%` }}
             ></div>
           </div>
@@ -191,15 +191,15 @@ const Question = () => {
 
         {/* Category Header - Show when starting a new category */}
         {isFirstQuestionInCategory && currentCategoryInfo && (
-          <Card className="bg-card/40 border border-primary/40 shadow-kosha mb-4 backdrop-blur-sm">
-            <CardContent className="p-3 md:p-4 text-center">
-              <h2 className="text-lg md:text-xl font-bold text-foreground mb-1">
+          <Card className="bg-white border border-gray-200 shadow-sm mb-6">
+            <CardContent className="p-4 md:p-6 text-center">
+              <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
                 {currentCategoryInfo.title}
               </h2>
-              <p className="text-primary text-sm md:text-base font-medium mb-2">
+              <p className="text-blue-600 text-base md:text-lg font-medium mb-3">
                 {currentCategoryInfo.subtitle}
               </p>
-              <p className="text-muted-foreground text-sm md:text-base italic max-w-lg mx-auto">
+              <p className="text-gray-600 text-base md:text-lg italic max-w-lg mx-auto">
                 {currentCategoryInfo.description}
               </p>
             </CardContent>
@@ -207,43 +207,43 @@ const Question = () => {
         )}
 
         {/* Main Question Card */}
-        <Card className="bg-card/40 border border-primary/30 shadow-kosha backdrop-blur-sm">
-          <CardContent className="p-4 md:p-6">
+        <Card className="bg-white border border-gray-200 shadow-lg">
+          <CardContent className="p-6 md:p-8">
 
             {/* Question Icon */}
-            <div className="flex justify-center mb-4">
-              <div className="w-12 h-12 bg-gradient-kosha rounded-full flex items-center justify-center shadow-glow">
-                <span className="text-lg">💧</span>
+            <div className="flex justify-center mb-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-md">
+                <span className="text-2xl">💧</span>
               </div>
             </div>
 
             {/* Question Title and Content */}
-            <div className="text-center mb-4">
-              <h2 className="text-base md:text-lg font-medium text-muted-foreground mb-3">
+            <div className="text-center mb-6">
+              <h2 className="text-lg md:text-xl font-semibold text-gray-700 mb-4">
                 {question.title}
               </h2>
               {question.description && (
-                <p className="text-sm md:text-base text-foreground mb-4 italic max-w-xl mx-auto bg-primary/10 px-3 py-2 rounded-lg border-l-4 border-primary backdrop-blur-sm">
+                <p className="text-base md:text-lg text-gray-600 mb-6 italic max-w-xl mx-auto bg-blue-50 px-4 py-3 rounded-lg border-l-4 border-blue-400">
                   {question.description}
                 </p>
               )}
               {question.question_text && (
-                <h1 className="text-xl md:text-2xl font-bold text-foreground leading-tight max-w-2xl mx-auto">
+                <h1 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight max-w-2xl mx-auto">
                   {question.question_text}
                 </h1>
               )}
             </div>
 
             {/* Select Dropdown */}
-            <div className="mb-6">
+            <div className="mb-8">
               <Select value={selected ?? undefined} onValueChange={setSelected}>
-                <SelectTrigger className="w-full h-10 md:h-12 text-sm md:text-base bg-card/50 border-2 border-primary/40 hover:border-primary focus:border-primary text-foreground rounded-lg backdrop-blur-sm">
-                  <SelectValue placeholder="select an option" className="text-muted-foreground" />
+                <SelectTrigger className="w-full h-12 md:h-14 text-base md:text-lg bg-white border-2 border-gray-300 hover:border-blue-500 focus:border-blue-500 text-gray-900 rounded-lg shadow-sm">
+                  <SelectValue placeholder="select an option" className="text-gray-500" />
                 </SelectTrigger>
-                <SelectContent className="bg-card border border-primary/30 shadow-kosha rounded-lg max-h-64 overflow-y-auto backdrop-blur-sm">
+                <SelectContent className="bg-white border border-gray-200 shadow-xl rounded-lg max-h-64 overflow-y-auto">
                   {options.map((opt) => (
-                    <SelectItem key={opt.id} value={opt.id} className="py-3 px-4 hover:bg-primary/20 cursor-pointer text-foreground">
-                      <div className="font-medium text-sm">
+                    <SelectItem key={opt.id} value={opt.id} className="py-4 px-6 hover:bg-blue-50 cursor-pointer text-gray-900 border-b border-gray-100 last:border-b-0">
+                      <div className="font-medium text-base">
                         {opt.label}
                       </div>
                     </SelectItem>
@@ -258,13 +258,13 @@ const Question = () => {
                 variant="outline" 
                 onClick={handlePrev} 
                 disabled={indexNum <= 1}
-                className="px-4 md:px-6 py-2 text-sm font-medium bg-transparent border-primary/40 text-muted-foreground hover:bg-primary/20 hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed rounded-lg"
+                className="px-6 md:px-8 py-3 text-base font-medium bg-white border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg shadow-sm"
               >
                 ← Previous
               </Button>
               
               <Button 
-                className="bg-gradient-kosha hover:bg-gradient-kosha-alt text-white px-4 md:px-6 py-2 text-sm font-medium shadow-kosha hover:shadow-glow transition-all duration-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed" 
+                className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 md:px-8 py-3 text-base font-medium shadow-md hover:shadow-lg transition-all duration-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed" 
                 onClick={handleNext} 
                 disabled={busy || !selected}
               >
