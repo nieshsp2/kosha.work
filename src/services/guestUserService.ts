@@ -35,7 +35,7 @@ export interface GuestResponse {
 }
 
 class GuestUserService {
-  private getGuestIdSync(): string {
+  private async getGuestId(): Promise<string> {
     let guestId = localStorage.getItem('guest_id');
     if (!guestId || !this.isValidUUID(guestId)) {
       // Generate a proper UUID for Supabase compatibility
@@ -47,18 +47,6 @@ class GuestUserService {
       localStorage.setItem('guest_id', guestId);
     } else {
       console.log('Using existing valid UUID:', guestId);
-    }
-    return guestId;
-  }
-
-  private async getGuestId(): Promise<string> {
-    const guestId = this.getGuestIdSync();
-    
-    // Set the guest session context for RLS
-    try {
-      await supabase.rpc('set_guest_session_context', { guest_session_id: guestId });
-    } catch (error) {
-      console.warn('Failed to set guest session context:', error);
     }
 
     return guestId;
