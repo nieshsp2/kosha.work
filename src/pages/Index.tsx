@@ -51,7 +51,6 @@ const Index = () => {
             </span>
           </div>
           <div className="hidden md:flex items-center gap-6">
-            <a href="#market" className="text-muted-foreground hover:text-foreground transition-colors">Market</a>
             <a href="#solution" className="text-muted-foreground hover:text-foreground transition-colors">Solution</a>
             <a href="#advantage" className="text-muted-foreground hover:text-foreground transition-colors">Advantage</a>
             <Button variant="cta" size="sm" onClick={() => window.open('/user-info', '_self')}>
@@ -92,12 +91,6 @@ const Index = () => {
               <CardContent className="p-6 text-center">
                 <div className="text-3xl font-bold text-brand-wellness mb-2">B2B</div>
                 <div className="text-sm text-muted-foreground">Enterprise Focus</div>
-              </CardContent>
-            </Card>
-            <Card className="bg-card/10 backdrop-blur-sm border-white/10 animate-float" style={{ animationDelay: '0.3s' }}>
-              <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-brand-wealth mb-2">6:1</div>
-                <div className="text-sm text-muted-foreground">Proven Wellbeing ROI</div>
               </CardContent>
             </Card>
             <Card className="bg-card/10 backdrop-blur-sm border-white/10 animate-float" style={{ animationDelay: '0.6s' }}>
@@ -160,12 +153,6 @@ const Index = () => {
             </Card>
           </div>
           
-          <div className="text-center">
-            <Button variant="hero" size="lg">
-              <Coins className="mr-2 h-5 w-5" />
-              See Kosha's Solution
-            </Button>
-          </div>
         </div>
       </section>
 
