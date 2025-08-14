@@ -35,7 +35,7 @@ export interface GuestResponse {
 }
 
 class GuestUserService {
-  private getGuestId(): string {
+  private async getGuestId(): Promise<string> {
     let guestId = localStorage.getItem('guest_id');
     if (!guestId || !this.isValidUUID(guestId)) {
       // Generate a proper UUID for Supabase compatibility
@@ -48,6 +48,14 @@ class GuestUserService {
     } else {
       console.log('Using existing valid UUID:', guestId);
     }
+
+    // Set the guest session context for RLS
+    try {
+      await supabase.rpc('set_guest_session_context', { guest_session_id: guestId });
+    } catch (error) {
+      console.warn('Failed to set guest session context:', error);
+    }
+
     return guestId;
   }
 
@@ -66,7 +74,7 @@ class GuestUserService {
   }
 
   async createOrUpdateProfile(profile: Omit<GuestUserProfile, 'id' | 'user_id' | 'guest_id' | 'created_at' | 'updated_at'>): Promise<GuestUserProfile> {
-    const guestId = this.getGuestId();
+    const guestId = await this.getGuestId();
     
     try {
       // Store in localStorage as backup
@@ -115,7 +123,7 @@ class GuestUserService {
   }
 
   async getProfile(): Promise<GuestUserProfile | null> {
-    const guestId = this.getGuestId();
+    const guestId = await this.getGuestId();
     
     try {
       // First try localStorage
@@ -152,7 +160,7 @@ class GuestUserService {
   }
 
   async createAssessment(): Promise<GuestAssessment> {
-    const guestId = this.getGuestId();
+    const guestId = await this.getGuestId();
     
     try {
       console.log('Creating assessment for guest:', guestId);
@@ -210,7 +218,7 @@ class GuestUserService {
   }
 
   async updateAssessmentProgress(currentIndex: number, status: 'in_progress' | 'completed' = 'in_progress'): Promise<void> {
-    const guestId = this.getGuestId();
+    const guestId = await this.getGuestId();
     
     try {
       console.log(`Updating assessment progress: index ${currentIndex}, status ${status}, guest ${guestId}`);
@@ -283,7 +291,7 @@ class GuestUserService {
   }
 
   async saveResponse(questionId: string, optionId: string): Promise<void> {
-    const guestId = this.getGuestId();
+    const guestId = await this.getGuestId();
     
     try {
       console.log(`Saving response for question ${questionId}, option ${optionId}, guest ${guestId}`);
@@ -359,7 +367,7 @@ class GuestUserService {
   }
 
   async getResponses(): Promise<GuestResponse[]> {
-    const guestId = this.getGuestId();
+    const guestId = await this.getGuestId();
     
     try {
       // Get from localStorage
@@ -394,7 +402,7 @@ class GuestUserService {
   }
 
   async getAssessment(): Promise<GuestAssessment | null> {
-    const guestId = this.getGuestId();
+    const guestId = await this.getGuestId();
     
     try {
       // Get from localStorage

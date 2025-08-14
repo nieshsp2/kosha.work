@@ -464,7 +464,18 @@ export type Database = {
       }
     }
     Functions: {
-      [_ in never]: never
+      get_current_guest_id: {
+        Args: Record<PropertyKey, never>
+        Returns: string
+      }
+      set_guest_session_context: {
+        Args: { guest_session_id: string }
+        Returns: undefined
+      }
+      validate_guest_session: {
+        Args: { guest_session_id: string }
+        Returns: boolean
+      }
     }
     Enums: {
       hs_assessment_status: "not_started" | "in_progress" | "completed"
