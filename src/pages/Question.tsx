@@ -209,14 +209,6 @@ const Question = () => {
         {/* Main Question Card */}
         <Card className="bg-gray-900 border border-gray-700 shadow-2xl">
           <CardContent className="p-6 md:p-8">
-            {/* Category Badge */}
-            <div className="flex justify-center mb-6">
-              <div className="bg-gray-800 border border-gray-600 rounded-full px-4 py-2">
-                <span className="text-gray-300 font-medium text-sm uppercase tracking-wider">
-                  {question.category} • Question {indexNum}
-                </span>
-              </div>
-            </div>
 
             {/* Question Icon */}
             <div className="flex justify-center mb-6">
