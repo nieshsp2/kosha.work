@@ -14,6 +14,158 @@ export type Database = {
   }
   public: {
     Tables: {
+      HS_assessment_scores: {
+        Row: {
+          assessment_date: string
+          assessment_id: string
+          created_at: string
+          guest_id: string | null
+          health_digestion_score: number
+          health_exercise_score: number
+          health_max_score: number
+          health_nutrition_score: number
+          health_oral_care_score: number
+          health_outdoor_air_score: number
+          health_percentage: number
+          health_skin_care_score: number
+          health_sleep_score: number
+          health_sunlight_score: number
+          health_total_score: number
+          health_water_score: number
+          id: string
+          overall_grade: string
+          overall_level: string
+          overall_max_score: number
+          overall_percentage: number
+          overall_total_score: number
+          relationships_children_score: number
+          relationships_emotional_wellbeing_score: number
+          relationships_friends_score: number
+          relationships_max_score: number
+          relationships_mental_wellbeing_score: number
+          relationships_parents_score: number
+          relationships_partner_score: number
+          relationships_percentage: number
+          relationships_relatives_score: number
+          relationships_total_score: number
+          relationships_universal_oneness_score: number
+          total_questions_answered: number
+          updated_at: string
+          user_id: string | null
+          wealth_creativity_score: number
+          wealth_diversity_score: number
+          wealth_max_score: number
+          wealth_percentage: number
+          wealth_quality_score: number
+          wealth_quantity_score: number
+          wealth_rest_relaxation_score: number
+          wealth_total_score: number
+          wealth_workplace_score: number
+        }
+        Insert: {
+          assessment_date?: string
+          assessment_id: string
+          created_at?: string
+          guest_id?: string | null
+          health_digestion_score: number
+          health_exercise_score: number
+          health_max_score?: number
+          health_nutrition_score: number
+          health_oral_care_score: number
+          health_outdoor_air_score: number
+          health_percentage: number
+          health_skin_care_score: number
+          health_sleep_score: number
+          health_sunlight_score: number
+          health_total_score: number
+          health_water_score: number
+          id?: string
+          overall_grade: string
+          overall_level: string
+          overall_max_score: number
+          overall_percentage: number
+          overall_total_score: number
+          relationships_children_score: number
+          relationships_emotional_wellbeing_score: number
+          relationships_friends_score: number
+          relationships_max_score?: number
+          relationships_mental_wellbeing_score: number
+          relationships_parents_score: number
+          relationships_partner_score: number
+          relationships_percentage: number
+          relationships_relatives_score: number
+          relationships_total_score: number
+          relationships_universal_oneness_score: number
+          total_questions_answered: number
+          updated_at?: string
+          user_id?: string | null
+          wealth_creativity_score: number
+          wealth_diversity_score: number
+          wealth_max_score?: number
+          wealth_percentage: number
+          wealth_quality_score: number
+          wealth_quantity_score: number
+          wealth_rest_relaxation_score: number
+          wealth_total_score: number
+          wealth_workplace_score: number
+        }
+        Update: {
+          assessment_date?: string
+          assessment_id?: string
+          created_at?: string
+          guest_id?: string | null
+          health_digestion_score?: number
+          health_exercise_score?: number
+          health_max_score?: number
+          health_nutrition_score?: number
+          health_oral_care_score?: number
+          health_outdoor_air_score?: number
+          health_percentage?: number
+          health_skin_care_score?: number
+          health_sleep_score?: number
+          health_sunlight_score?: number
+          health_total_score?: number
+          health_water_score?: number
+          id?: string
+          overall_grade?: string
+          overall_level?: string
+          overall_max_score?: number
+          overall_percentage?: number
+          overall_total_score?: number
+          relationships_children_score?: number
+          relationships_emotional_wellbeing_score?: number
+          relationships_friends_score?: number
+          relationships_max_score?: number
+          relationships_mental_wellbeing_score?: number
+          relationships_parents_score?: number
+          relationships_partner_score?: number
+          relationships_percentage?: number
+          relationships_relatives_score?: number
+          relationships_total_score?: number
+          relationships_universal_oneness_score?: number
+          total_questions_answered?: number
+          updated_at?: string
+          user_id?: string | null
+          wealth_creativity_score?: number
+          wealth_diversity_score?: number
+          wealth_max_score?: number
+          wealth_percentage?: number
+          wealth_quality_score?: number
+          wealth_quantity_score?: number
+          wealth_rest_relaxation_score?: number
+          wealth_total_score?: number
+          wealth_workplace_score?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "HS_assessment_scores_assessment_id_fkey"
+            columns: ["assessment_id"]
+            isOneToOne: true
+            referencedRelation: "HS_assessments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       HS_assessments: {
         Row: {
           completed_at: string | null
@@ -251,6 +403,7 @@ export type Database = {
           id: string
           location: string | null
           occupation: string | null
+          user_id: string | null
         }
         Insert: {
           age?: number | null
@@ -260,6 +413,7 @@ export type Database = {
           id?: string
           location?: string | null
           occupation?: string | null
+          user_id?: string | null
         }
         Update: {
           age?: number | null
@@ -269,12 +423,45 @@ export type Database = {
           id?: string
           location?: string | null
           occupation?: string | null
+          user_id?: string | null
         }
         Relationships: []
       }
     }
     Views: {
-      [_ in never]: never
+      HS_assessment_scores_summary: {
+        Row: {
+          age: number | null
+          assessment_date: string | null
+          assessment_id: string | null
+          assessment_status:
+            | Database["public"]["Enums"]["hs_assessment_status"]
+            | null
+          completed_at: string | null
+          gender: string | null
+          guest_id: string | null
+          health_percentage: number | null
+          id: string | null
+          location: string | null
+          occupation: string | null
+          overall_grade: string | null
+          overall_level: string | null
+          overall_percentage: number | null
+          overall_total_score: number | null
+          relationships_percentage: number | null
+          user_id: string | null
+          wealth_percentage: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "HS_assessment_scores_assessment_id_fkey"
+            columns: ["assessment_id"]
+            isOneToOne: true
+            referencedRelation: "HS_assessments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Functions: {
       [_ in never]: never
