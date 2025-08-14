@@ -15,7 +15,7 @@ const Index = () => {
   const navigate = useNavigate();
 
   const handleStartAssessment = () => {
-    navigate('/assessment');
+    navigate('/start');
   };
 
   return (
