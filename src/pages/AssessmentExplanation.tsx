@@ -113,14 +113,14 @@ const AssessmentExplanation = () => {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-12 px-4">
+    <main className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 py-8 md:py-12 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+        <div className="text-center mb-8 md:mb-12">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
             Your Wellness Assessment Journey
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
             Discover your holistic wellness score across health, wealth, and relationships. 
             This comprehensive assessment will help you understand where you are and guide you toward where you want to be.
           </p>
@@ -152,26 +152,26 @@ const AssessmentExplanation = () => {
         </div>
 
         {/* Assessment Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12">
           {assessmentSteps.map((step, index) => (
-            <Card key={index} className={`${step.color} border-2`}>
+            <Card key={index} className={`${step.color} border-2 hover:shadow-md transition-all duration-300 hover:scale-[1.02]`}>
               <CardHeader className="text-center">
                 <div className="mx-auto mb-3">
                   {step.icon}
                 </div>
-                <CardTitle className="text-xl">{step.title}</CardTitle>
-                <CardDescription className="text-gray-700">
+                <CardTitle className="text-lg md:text-xl">{step.title}</CardTitle>
+                <CardDescription className="text-gray-700 text-sm md:text-base">
                   {step.description}
                 </CardDescription>
               </CardHeader>
               <CardContent className="text-center">
-                <div className="flex justify-center items-center space-x-4 text-sm text-gray-600">
+                <div className="flex justify-center items-center space-x-4 text-xs md:text-sm text-gray-600">
                   <div className="flex items-center space-x-1">
-                    <Clock className="h-4 w-4" />
+                    <Clock className="h-3 w-3 md:h-4 md:w-4" />
                     <span>{step.duration}</span>
                   </div>
                   <div className="flex items-center space-x-1">
-                    <Target className="h-4 w-4" />
+                    <Target className="h-3 w-3 md:h-4 md:w-4" />
                     <span>{step.questions} questions</span>
                   </div>
                 </div>
@@ -234,57 +234,22 @@ const AssessmentExplanation = () => {
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          {/* Test button to verify button functionality */}
-          <Button
-            onClick={() => {
-              console.log('🧪 Test button clicked!');
-              alert('Test button is working!');
-            }}
-            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2"
-          >
-            🧪 Test Button
-          </Button>
-          
-          {/* Simple navigation test button */}
-          <Button
-            onClick={() => {
-              console.log('🧪 Simple navigation test clicked!');
-              navigate('/assessment/question/1');
-            }}
-            className="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2"
-          >
-            🧪 Simple Nav Test
-          </Button>
-          
-          {/* Test navigation to home route */}
-          <Button
-            onClick={() => {
-              console.log('🧪 Home navigation test clicked!');
-              navigate('/');
-            }}
-            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2"
-          >
-            🧪 Home Nav Test
-          </Button>
-          
           <Button
             variant="outline"
             onClick={handleGoBack}
-            className="px-8 py-3 text-lg border-2"
+            className="px-6 md:px-8 py-2 md:py-3 text-base md:text-lg border-2"
           >
-            <ArrowLeft className="h-5 w-5 mr-2" />
+            <ArrowLeft className="h-4 w-4 md:h-5 md:w-5 mr-2" />
             Back to Profile
           </Button>
           
           <Button
             onClick={handleStartAssessment}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 md:px-8 py-2 md:py-3 text-base md:text-lg font-medium shadow-md hover:shadow-lg transition-all duration-300 animate-pulse-glow"
             data-testid="start-assessment-button"
-            onMouseEnter={() => console.log('Mouse entered Start Assessment button')}
-            onMouseLeave={() => console.log('Mouse left Start Assessment button')}
           >
             Start Assessment
-            <ArrowRight className="h-5 w-5 ml-2" />
+            <ArrowRight className="h-4 w-4 md:h-5 md:w-5 ml-2" />
           </Button>
         </div>
 

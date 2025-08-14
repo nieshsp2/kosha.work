@@ -93,13 +93,13 @@ const UserInfo = () => {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center p-4">
-      <Card className="w-full max-w-2xl shadow-xl border-0">
+    <main className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 flex items-center justify-center p-4">
+      <Card className="w-full max-w-2xl shadow-lg border">
         <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-bold text-gray-800">
+          <CardTitle className="text-2xl md:text-3xl font-bold text-gray-800">
             Complete Your Profile
           </CardTitle>
-          <CardDescription className="text-lg text-gray-600">
+          <CardDescription className="text-base md:text-lg text-gray-600">
             Tell us a bit about yourself to personalize your wellness assessment
           </CardDescription>
         </CardHeader>
@@ -117,7 +117,7 @@ const UserInfo = () => {
                 placeholder="you@example.com"
                 value={formData.email}
                 onChange={(e) => handleInputChange('email', e.target.value)}
-                className="h-12 text-base"
+                className="h-10 md:h-12 text-sm md:text-base"
                 required
               />
             </div>
@@ -135,7 +135,7 @@ const UserInfo = () => {
                 placeholder="e.g., 29"
                 value={formData.age}
                 onChange={(e) => handleInputChange('age', e.target.value)}
-                className="h-12 text-base"
+                className="h-10 md:h-12 text-sm md:text-base"
                 required
               />
             </div>
@@ -202,7 +202,7 @@ const UserInfo = () => {
             <div className="pt-4">
               <Button
                 type="submit"
-                className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                className="w-full h-12 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-base md:text-lg font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
                 disabled={saving}
               >
                 {saving ? "Saving..." : "Continue to Assessment"}

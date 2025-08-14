@@ -46,7 +46,7 @@ const Index = () => {
             </Badge>
 
             {/* Main Heading */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
               Human Behaviour{" "}
               <span className="bg-gradient-to-r from-green-400 via-yellow-400 to-pink-400 bg-clip-text text-transparent">
                 Operating System
@@ -54,7 +54,7 @@ const Index = () => {
             </h1>
 
             {/* Subheading */}
-            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
               First blockchain-powered B2B platform turning employee wellbeing into measurable assets.{" "}
               <span className="text-green-400 font-semibold">87% of corporate programs fail</span> - we solve 
               compliance, risk assessment, and premium optimization.
@@ -63,47 +63,39 @@ const Index = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
               <Button 
-                size="lg" 
-                className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 text-lg font-semibold"
+                size="default" 
+                className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 text-base font-medium transition-all duration-300 hover:scale-[1.02] animate-pulse-glow"
                 onClick={handleStartDemo}
               >
-                <Eye className="w-5 h-5 mr-3" />
+                <Eye className="w-4 h-4 mr-2" />
                 See Platform Demo
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="border-gray-600 text-white hover:bg-gray-800 px-8 py-4 text-lg"
-              >
-                <BarChart3 className="w-5 h-5 mr-3" />
-                View Market Data
               </Button>
             </div>
 
             {/* Stats Cards */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-              <Card className="bg-black/30 border border-gray-700 backdrop-blur-sm">
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">B2B</div>
-                  <div className="text-gray-300 text-sm">Enterprise Focus</div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
+              <Card className="bg-black/30 border border-gray-700 backdrop-blur-sm hover:bg-black/40 transition-all duration-300 hover:scale-[1.02] animate-fade-in">
+                <CardContent className="p-4 md:p-6 text-center">
+                  <div className="text-2xl md:text-3xl font-bold text-blue-400 mb-2">B2B</div>
+                  <div className="text-gray-300 text-xs md:text-sm">Enterprise Focus</div>
                 </CardContent>
               </Card>
-              <Card className="bg-black/30 border border-gray-700 backdrop-blur-sm">
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-yellow-400 mb-2">6:1</div>
-                  <div className="text-gray-300 text-sm">Proven Wellbeing ROI</div>
+              <Card className="bg-black/30 border border-gray-700 backdrop-blur-sm hover:bg-black/40 transition-all duration-300 hover:scale-[1.02] animate-fade-in">
+                <CardContent className="p-4 md:p-6 text-center">
+                  <div className="text-2xl md:text-3xl font-bold text-yellow-400 mb-2">6:1</div>
+                  <div className="text-gray-300 text-xs md:text-sm">Proven Wellbeing ROI</div>
                 </CardContent>
               </Card>
-              <Card className="bg-black/30 border border-gray-700 backdrop-blur-sm">
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-pink-400 mb-2">87%</div>
-                  <div className="text-gray-300 text-sm">Programs Fail (Poor Measurement)</div>
+              <Card className="bg-black/30 border border-gray-700 backdrop-blur-sm hover:bg-black/40 transition-all duration-300 hover:scale-[1.02] animate-fade-in">
+                <CardContent className="p-4 md:p-6 text-center">
+                  <div className="text-2xl md:text-3xl font-bold text-pink-400 mb-2">87%</div>
+                  <div className="text-gray-300 text-xs md:text-sm">Programs Fail (Poor Measurement)</div>
                 </CardContent>
               </Card>
-              <Card className="bg-black/30 border border-gray-700 backdrop-blur-sm">
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-green-400 mb-2">150</div>
-                  <div className="text-gray-300 text-sm">Countries Available</div>
+              <Card className="bg-black/30 border border-gray-700 backdrop-blur-sm hover:bg-black/40 transition-all duration-300 hover:scale-[1.02] animate-fade-in">
+                <CardContent className="p-4 md:p-6 text-center">
+                  <div className="text-2xl md:text-3xl font-bold text-green-400 mb-2">150</div>
+                  <div className="text-gray-300 text-xs md:text-sm">Countries Available</div>
                 </CardContent>
               </Card>
             </div>
@@ -112,47 +104,47 @@ const Index = () => {
       </section>
 
       {/* Corporate Wellbeing Crisis Section */}
-      <section id="market" className="py-20 bg-gradient-to-b from-black to-gray-900">
+      <section id="market" className="py-16 md:py-20 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
               The Corporate Wellbeing Crisis
             </h2>
             
-            <h3 className="text-3xl md:text-4xl font-bold mb-8 text-red-400">
+            <h3 className="text-xl md:text-3xl lg:text-4xl font-bold mb-8 text-red-400">
               $150B Lost Productivity Emergency
             </h3>
             
-            <p className="text-xl text-gray-300 mb-16 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-300 mb-12 md:mb-16 max-w-4xl mx-auto leading-relaxed">
               Lost productivity due to absenteeism related to physical and mental health is expected to cross USD 150 billion, 
               making wellbeing measurement a fiduciary duty for corporate boards.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-              <Card className="bg-gray-800/50 border border-red-500/30">
-                <CardContent className="p-6">
-                  <TrendingUp className="w-8 h-8 text-red-400 mb-4 mx-auto" />
-                  <h4 className="text-xl font-bold mb-3 text-white">Market Size Gap</h4>
-                  <p className="text-gray-300 mb-4">$69B market growing to $120B by 2032</p>
-                  <p className="text-sm text-red-400">Yet 87% of programs fail due to poor engagement and no outcome measurement</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
+              <Card className="bg-gray-800/50 border border-red-500/30 hover:bg-gray-800/70 transition-all duration-300 hover:scale-[1.02] animate-fade-in">
+                <CardContent className="p-4 md:p-6">
+                  <TrendingUp className="w-6 md:w-8 h-6 md:h-8 text-red-400 mb-4 mx-auto" />
+                  <h4 className="text-lg md:text-xl font-bold mb-3 text-white">Market Size Gap</h4>
+                  <p className="text-gray-300 mb-4 text-sm md:text-base">$69B market growing to $120B by 2032</p>
+                  <p className="text-xs md:text-sm text-red-400">Yet 87% of programs fail due to poor engagement and no outcome measurement</p>
                 </CardContent>
               </Card>
               
-              <Card className="bg-gray-800/50 border border-orange-500/30">
-                <CardContent className="p-6">
-                  <BarChart3 className="w-8 h-8 text-orange-400 mb-4 mx-auto" />
-                  <h4 className="text-xl font-bold mb-3 text-white">Measurement Crisis</h4>
-                  <p className="text-gray-300 mb-4">No comprehensive wellbeing ROI tracking</p>
-                  <p className="text-sm text-orange-400">Boards can't justify spending without measurable outcomes</p>
+              <Card className="bg-gray-800/50 border border-orange-500/30 hover:bg-gray-800/70 transition-all duration-300 hover:scale-[1.02] animate-fade-in">
+                <CardContent className="p-4 md:p-6">
+                  <BarChart3 className="w-6 md:w-8 h-6 md:h-8 text-orange-400 mb-4 mx-auto" />
+                  <h4 className="text-lg md:text-xl font-bold mb-3 text-white">Measurement Crisis</h4>
+                  <p className="text-gray-300 mb-4 text-sm md:text-base">No comprehensive wellbeing ROI tracking</p>
+                  <p className="text-xs md:text-sm text-orange-400">Boards can't justify spending without measurable outcomes</p>
                 </CardContent>
               </Card>
               
-              <Card className="bg-gray-800/50 border border-yellow-500/30">
-                <CardContent className="p-6">
-                  <Users className="w-8 h-8 text-yellow-400 mb-4 mx-auto" />
-                  <h4 className="text-xl font-bold mb-3 text-white">Engagement Failure</h4>
-                  <p className="text-gray-300 mb-4">Fragmented solutions, poor adoption</p>
-                  <p className="text-sm text-yellow-400">Employees need holistic, not siloed approaches</p>
+              <Card className="bg-gray-800/50 border border-yellow-500/30 hover:bg-gray-800/70 transition-all duration-300 hover:scale-[1.02] animate-fade-in">
+                <CardContent className="p-4 md:p-6">
+                  <Users className="w-6 md:w-8 h-6 md:h-8 text-yellow-400 mb-4 mx-auto" />
+                  <h4 className="text-lg md:text-xl font-bold mb-3 text-white">Engagement Failure</h4>
+                  <p className="text-gray-300 mb-4 text-sm md:text-base">Fragmented solutions, poor adoption</p>
+                  <p className="text-xs md:text-sm text-yellow-400">Employees need holistic, not siloed approaches</p>
                 </CardContent>
               </Card>
             </div>

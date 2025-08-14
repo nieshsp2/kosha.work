@@ -147,35 +147,35 @@ const Question = () => {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center p-4">
-      <Card className="w-full max-w-4xl shadow-2xl border-0 bg-white/80 backdrop-blur-sm">
+    <main className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 flex items-center justify-center p-4">
+      <Card className="w-full max-w-3xl shadow-lg border bg-white">
         <CardHeader className="text-center pb-6">
           <div className="mb-4">
-            <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 border border-blue-200">
+            <div className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 border border-blue-200">
               <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
               {question.category.charAt(0).toUpperCase() + question.category.slice(1)} Assessment
             </div>
           </div>
           <CardTitle as-child>
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent leading-tight">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent leading-tight">
               {question.title}
             </h1>
           </CardTitle>
           {question.description && (
-            <CardDescription className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+            <CardDescription className="text-base md:text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
               {question.description}
             </CardDescription>
           )}
         </CardHeader>
         
-        <CardContent className="space-y-8 px-8">
+        <CardContent className="space-y-6 px-6 md:px-8">
           {/* Progress Section */}
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-100">
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4 md:p-6 border border-blue-100">
             <div className="flex justify-between text-sm font-medium text-blue-700 mb-3">
               <span>Question {indexNum} of {total}</span>
               <span>{progressPct}% Complete</span>
             </div>
-            <Progress value={progressPct} className="h-3 bg-blue-100" />
+            <Progress value={progressPct} className="h-2 md:h-3 bg-blue-100" />
             <div className="mt-2 text-xs text-blue-600">
               {answeredCount} questions answered • {total - answeredCount} remaining
             </div>
@@ -183,21 +183,21 @@ const Question = () => {
 
           {/* Options Section */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-800 text-center mb-6">
+            <h3 className="text-base md:text-lg font-semibold text-gray-800 text-center mb-4 md:mb-6">
               Select the option that best describes you:
             </h3>
             
             <Select value={selected ?? undefined} onValueChange={setSelected}>
-              <SelectTrigger className="w-full h-16 text-base border-2 border-gray-200 hover:border-blue-300 focus:border-blue-500">
+              <SelectTrigger className="w-full h-12 md:h-14 text-sm md:text-base border border-gray-300 hover:border-blue-400 focus:border-blue-500">
                 <SelectValue placeholder="Select the option that best describes you" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white border border-gray-200 shadow-lg">
                 {options.map((opt) => (
-                  <SelectItem key={opt.id} value={opt.id} className="py-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-base font-medium text-gray-800">{opt.label}</span>
+                  <SelectItem key={opt.id} value={opt.id} className="py-2 md:py-3">
+                    <div className="flex items-center justify-between w-full">
+                      <span className="text-sm md:text-base font-medium text-gray-800">{opt.label}</span>
                       {opt.value && (
-                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">
+                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700 ml-2">
                           Score: {opt.value}
                         </span>
                       )}
@@ -209,18 +209,18 @@ const Question = () => {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex justify-between pt-6 border-t border-gray-100">
+          <div className="flex justify-between pt-4 md:pt-6 border-t border-gray-100">
             <Button 
               variant="outline" 
               onClick={handlePrev} 
               disabled={indexNum <= 1}
-              className="px-8 py-3 text-base font-medium border-2 hover:bg-gray-50"
+              className="px-4 md:px-6 py-2 md:py-2.5 text-sm md:text-base font-medium border hover:bg-gray-50"
             >
               ← Previous
             </Button>
             
             <Button 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 text-base font-medium shadow-lg hover:shadow-xl transition-all duration-300" 
+              className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-4 md:px-6 py-2 md:py-2.5 text-sm md:text-base font-medium shadow-md hover:shadow-lg transition-all duration-300" 
               onClick={handleNext} 
               disabled={busy || !selected}
             >

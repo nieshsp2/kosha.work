@@ -398,34 +398,38 @@ class GuestUserService {
     const guestId = await this.getGuestId();
     
     try {
-      // Get from localStorage
-      const localAssessment = localStorage.getItem('guest_assessment');
-      if (localAssessment) {
-        return JSON.parse(localAssessment);
-      }
-      
-      // Try to get assessment from Supabase
+      // Try to get assessment from Supabase first (to ensure data sync)
       try {
         const { data, error } = await supabase
           .from('HS_assessments')
           .select('*')
-          .eq('guest_id', guestId) // Use guest_id instead of user_id
+          .eq('guest_id', guestId)
           .order('created_at', { ascending: false })
           .limit(1)
           .single();
         
-        if (error) {
-          console.warn('Supabase assessment fetch failed:', error);
-        } else if (data) {
+        if (!error && data) {
           // Store in localStorage for future use
           const assessmentData = { ...data, guest_id: guestId };
           localStorage.setItem('guest_assessment', JSON.stringify(assessmentData));
+          console.log('Assessment fetched from Supabase and synced to localStorage:', assessmentData);
           return assessmentData as GuestAssessment;
+        } else {
+          console.warn('Supabase assessment fetch failed:', error);
         }
       } catch (supabaseError) {
-        console.warn('Supabase error, using localStorage only:', supabaseError);
+        console.warn('Supabase error, falling back to localStorage:', supabaseError);
+      }
+
+      // Fallback to localStorage
+      const localAssessment = localStorage.getItem('guest_assessment');
+      if (localAssessment) {
+        const assessment = JSON.parse(localAssessment);
+        console.log('Using assessment from localStorage:', assessment);
+        return assessment;
       }
       
+      console.log('No assessment found in Supabase or localStorage');
       return null;
     } catch (error) {
       console.error('Error getting assessment:', error);
