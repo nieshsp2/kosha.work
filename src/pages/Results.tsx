@@ -1018,9 +1018,9 @@ const Results = () => {
               <div className="text-center">
                 <h3 className="text-2xl font-bold text-gray-800 mb-2 flex items-center justify-center gap-2">
                   <Sparkles className="h-6 w-6 text-yellow-500" />
-                  Gemini AI-Powered Recommendations
+                  AI-Powered Recommendations
                 </h3>
-                <p className="text-gray-600">Personalized suggestions based on your unique assessment results using Google's Gemini AI</p>
+                <p className="text-gray-600">Personalized suggestions based on your unique assessment results using AI</p>
               </div>
               
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
