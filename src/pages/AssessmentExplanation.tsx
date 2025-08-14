@@ -80,7 +80,7 @@ const AssessmentExplanation = () => {
                 Time Investment
               </h3>
               <p className="text-sm text-muted-foreground">
-                Please spare at least <strong>10 uninterrupted minutes</strong>. Find a quiet space, maybe grab a warm beverage, and let's dive deep into your wellbeing landscape.
+                Please spare at least <strong>5 uninterrupted minutes</strong>. Find a quiet space, maybe grab a warm beverage, and let's dive deep into your wellbeing landscape.
               </p>
             </div>
             <div className="grid gap-4 text-sm">
