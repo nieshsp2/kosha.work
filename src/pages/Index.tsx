@@ -90,10 +90,6 @@ const Index = () => {
               <Database className="mr-2 h-5 w-5" />
               See Platform Demo
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-white/10 border-white/20 text-white hover:bg-white/20">
-              <LineChart className="mr-2 h-5 w-5" />
-              View Market Data
-            </Button>
           </div>
           
           {/* Market Stats */}
