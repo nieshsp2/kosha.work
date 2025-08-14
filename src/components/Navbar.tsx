@@ -22,19 +22,15 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4">
             <a href="#solution" className="text-muted-foreground hover:text-foreground transition-colors">
               Solution
             </a>
             <a href="#advantage" className="text-muted-foreground hover:text-foreground transition-colors">
               Advantage
             </a>
-          </div>
-
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center">
             <Button 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 font-semibold">
+              className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 font-semibold ml-2">
               Wellbeing Dashboard
             </Button>
           </div>
