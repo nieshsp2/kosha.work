@@ -191,15 +191,15 @@ const Question = () => {
 
         {/* Category Header - Show when starting a new category */}
         {isFirstQuestionInCategory && currentCategoryInfo && (
-          <Card className="bg-gradient-to-r from-purple-900/50 to-blue-900/50 border border-purple-500/30 shadow-2xl mb-6">
-            <CardContent className="p-4 md:p-6 text-center">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+          <Card className="bg-gradient-to-r from-purple-900/50 to-blue-900/50 border border-purple-500/30 shadow-2xl mb-4">
+            <CardContent className="p-3 md:p-4 text-center">
+              <h2 className="text-lg md:text-xl font-bold text-white mb-1">
                 {currentCategoryInfo.title}
               </h2>
-              <p className="text-purple-300 text-base md:text-lg font-medium mb-3">
+              <p className="text-purple-300 text-sm md:text-base font-medium mb-2">
                 {currentCategoryInfo.subtitle}
               </p>
-              <p className="text-gray-300 text-base md:text-lg italic max-w-xl mx-auto">
+              <p className="text-gray-300 text-sm md:text-base italic max-w-lg mx-auto">
                 {currentCategoryInfo.description}
               </p>
             </CardContent>
