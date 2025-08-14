@@ -10,6 +10,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { guestUserService } from "@/services/guestUserService";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
+import KoshaLogo from "@/components/KoshaLogo";
 
 interface UserInfoFormData {
   age: number;
@@ -88,7 +89,10 @@ export const UserInfoForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/5 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/5 flex flex-col items-center justify-center p-4">
+      <div className="mb-8 text-center">
+        <KoshaLogo size="lg" />
+      </div>
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
