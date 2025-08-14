@@ -238,7 +238,7 @@ const Question = () => {
             <div className="mb-8">
               <Select value={selected ?? undefined} onValueChange={setSelected}>
                 <SelectTrigger className="w-full h-14 md:h-16 text-base md:text-lg bg-gray-800 border-2 border-gray-600 hover:border-green-500 focus:border-green-500 text-white rounded-xl">
-                  <SelectValue placeholder="Select an option..." className="text-gray-400" />
+                  <SelectValue placeholder="select an option" className="text-gray-400" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border border-gray-200 shadow-xl rounded-xl max-h-80 overflow-y-auto">
                   {options.map((opt) => (
