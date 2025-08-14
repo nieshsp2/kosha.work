@@ -243,15 +243,8 @@ const Question = () => {
                 <SelectContent className="bg-white border border-gray-200 shadow-xl rounded-lg max-h-64 overflow-y-auto">
                   {options.map((opt) => (
                     <SelectItem key={opt.id} value={opt.id} className="py-3 px-4 hover:bg-gray-50 cursor-pointer">
-                      <div className="space-y-1">
-                        <div className="font-medium text-gray-900 text-sm">
-                          {opt.label}
-                        </div>
-                        {opt.value && (
-                          <div className="text-xs text-gray-500">
-                            Score: {opt.value}
-                          </div>
-                        )}
+                      <div className="font-medium text-gray-900 text-sm">
+                        {opt.label}
                       </div>
                     </SelectItem>
                   ))}
