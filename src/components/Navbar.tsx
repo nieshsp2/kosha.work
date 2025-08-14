@@ -2,11 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Menu, Heart, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "@/hooks/useAuth";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const { user } = useAuth();
   return (
     <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-lg border-b border-border z-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,10 +40,10 @@ const Navbar = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" className="text-foreground hover:text-primary" onClick={() => navigate('/auth')}>
-              Sign In
+            <Button variant="ghost" className="text-foreground hover:text-primary" onClick={() => navigate('/assessment/results')}>
+              View Results
             </Button>
-            <Button className="bg-gradient-healing hover:shadow-healing" onClick={() => navigate(user ? '/start' : '/auth')}>
+            <Button className="bg-gradient-healing hover:shadow-healing" onClick={() => navigate('/start')}>
               <Sparkles className="w-4 h-4 mr-2" />
               Start Assessment
             </Button>
@@ -83,10 +81,10 @@ const Navbar = () => {
                 About
               </a>
               <div className="px-3 py-2 space-y-2">
-                <Button variant="ghost" className="w-full" onClick={() => navigate('/auth')}>
-                  Sign In
+                <Button variant="ghost" className="w-full" onClick={() => navigate('/assessment/results')}>
+                  View Results
                 </Button>
-                <Button className="w-full bg-gradient-healing" onClick={() => navigate(user ? '/start' : '/auth')}>
+                <Button className="w-full bg-gradient-healing" onClick={() => navigate('/start')}>
                   <Sparkles className="w-4 h-4 mr-2" />
                   Start Assessment
                 </Button>

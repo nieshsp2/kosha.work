@@ -19,34 +19,37 @@ export type Database = {
           completed_at: string | null
           created_at: string
           current_index: number
+          guest_id: string | null
           id: string
           started_at: string | null
           status: Database["public"]["Enums"]["hs_assessment_status"]
           total_questions: number
           updated_at: string
-          user_id: string
+          user_id: string | null
         }
         Insert: {
           completed_at?: string | null
           created_at?: string
           current_index?: number
+          guest_id?: string | null
           id?: string
           started_at?: string | null
           status?: Database["public"]["Enums"]["hs_assessment_status"]
           total_questions?: number
           updated_at?: string
-          user_id: string
+          user_id?: string | null
         }
         Update: {
           completed_at?: string | null
           created_at?: string
           current_index?: number
+          guest_id?: string | null
           id?: string
           started_at?: string | null
           status?: Database["public"]["Enums"]["hs_assessment_status"]
           total_questions?: number
           updated_at?: string
-          user_id?: string
+          user_id?: string | null
         }
         Relationships: []
       }
@@ -170,33 +173,36 @@ export type Database = {
           created_at: string
           email: string | null
           gender: string | null
+          guest_id: string | null
           id: string
           location: string | null
           occupation: string | null
           updated_at: string
-          user_id: string
+          user_id: string | null
         }
         Insert: {
           age?: number | null
           created_at?: string
           email?: string | null
           gender?: string | null
+          guest_id?: string | null
           id?: string
           location?: string | null
           occupation?: string | null
           updated_at?: string
-          user_id: string
+          user_id?: string | null
         }
         Update: {
           age?: number | null
           created_at?: string
           email?: string | null
           gender?: string | null
+          guest_id?: string | null
           id?: string
           location?: string | null
           occupation?: string | null
           updated_at?: string
-          user_id?: string
+          user_id?: string | null
         }
         Relationships: []
       }
