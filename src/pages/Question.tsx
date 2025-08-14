@@ -227,13 +227,13 @@ const Question = () => {
 
             {/* Question Title */}
             <div className="text-center mb-6">
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
+              <h2 className="text-lg md:text-xl font-medium text-gray-400 mb-4">
                 {question.title}
-              </h1>
+              </h2>
               {question.description && (
-                <p className="text-gray-400 text-base md:text-lg max-w-3xl mx-auto">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight max-w-4xl mx-auto">
                   {question.description}
-                </p>
+                </h1>
               )}
             </div>
 
