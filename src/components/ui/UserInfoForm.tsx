@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { supabase } from "@/integrations/supabase/client";
+import { guestUserService } from "@/services/guestUserService";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -57,28 +58,22 @@ export const UserInfoForm = () => {
     try {
       setIsSubmitting(true);
       
-      // Insert user profile data
-      const { error } = await supabase
-        .from('user_profiles')
-        .upsert({
-          email: data.email,
-          age: data.age,
-          occupation: data.occupation,
-          gender: data.gender,
-          location: data.location 
-        });
-
-      if (error) {
-        throw error;
-      }
+      // Save user profile using guest user service
+      await guestUserService.createOrUpdateProfile({
+        email: data.email,
+        age: data.age,
+        occupation: data.occupation,
+        gender: data.gender,
+        location: data.location
+      });
 
       toast({
         title: "Profile saved successfully!",
         description: "You can now proceed to the assessment.",
       });
 
-      // Navigate to enhanced assessment
-      navigate('/assessment');
+      // Navigate to assessment explanation
+      navigate('/assessment-explanation');
       
     } catch (error: any) {
       console.error('Error saving user profile:', error);

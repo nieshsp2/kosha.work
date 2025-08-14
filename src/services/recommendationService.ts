@@ -129,7 +129,10 @@ export class RecommendationService {
 
       if (data?.recommendations && Array.isArray(data.recommendations)) {
         console.log(`✅ Received ${data.recommendations.length} AI recommendations`);
-        return data.recommendations;
+        // Limit to exactly 3 recommendations
+        const limitedRecommendations = data.recommendations.slice(0, 3);
+        console.log(`📊 Limited to ${limitedRecommendations.length} recommendations`);
+        return limitedRecommendations;
       } else {
         console.warn('⚠️ No recommendations in response, using fallback');
         return this.generateFallbackRecommendations(scores);
@@ -365,26 +368,10 @@ export class RecommendationService {
       });
     }
     
-    // Always add at least one general recommendation
-    if (recommendations.length === 0) {
-      recommendations.push({
-        title: 'Start Your Wellbeing Journey',
-        description: 'Begin with small, manageable changes to build momentum and improve your overall wellbeing score.',
-        category: 'health',
-        priority: 'medium',
-        actionableSteps: [
-          'Choose one area to focus on this week',
-          'Set a specific, measurable goal',
-          'Track your progress daily'
-        ],
-        estimatedTime: '5-10 minutes daily',
-        difficulty: 'beginner',
-        nudgeType: 'micro-habit'
-      });
-    }
-    
-    console.log(`✅ Generated ${recommendations.length} fallback recommendations`);
-    return recommendations;
+    // Limit to exactly 3 recommendations
+    const limitedRecommendations = recommendations.slice(0, 3);
+    console.log(`✅ Generated ${limitedRecommendations.length} fallback recommendations (limited to 3)`);
+    return limitedRecommendations;
   }
 }
 
