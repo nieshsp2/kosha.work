@@ -1,50 +1,45 @@
 import { Button } from "@/components/ui/button";
-import { Menu, Heart, Sparkles } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+
   return (
-    <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-lg border-b border-border z-50">
+    <nav className="fixed top-0 w-full bg-black/90 backdrop-blur-lg border-b border-gray-800 z-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-healing rounded-full flex items-center justify-center">
-              <Heart className="w-5 h-5 text-white" />
+          <div className="flex items-center space-x-3">
+            <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-400 rounded-lg flex items-center justify-center">
+              <div className="w-4 h-4 bg-black rounded-sm"></div>
             </div>
-            <span className="text-xl font-bold bg-gradient-healing bg-clip-text text-transparent">
-              HealSpace
+            <span className="text-xl font-bold text-white">
+              HWR by <span className="text-green-400">Kosha</span>
             </span>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-foreground hover:text-primary transition-colors">
-              Home
+            <a href="#features" className="text-gray-300 hover:text-white transition-colors">
+              Features
             </a>
-            <a href="#modalities" className="text-foreground hover:text-primary transition-colors">
-              Healing Modalities
+            <a href="#clients" className="text-gray-300 hover:text-white transition-colors">
+              Clients
             </a>
-            <a href="#healers" className="text-foreground hover:text-primary transition-colors">
-              Find Healers
-            </a>
-            <a href="#how-it-works" className="text-foreground hover:text-primary transition-colors">
-              How It Works
-            </a>
-            <a href="#about" className="text-foreground hover:text-primary transition-colors">
+            <a href="#about" className="text-gray-300 hover:text-white transition-colors">
               About
             </a>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" className="text-foreground hover:text-primary" onClick={() => navigate('/assessment/results')}>
-              View Results
-            </Button>
-            <Button className="bg-gradient-healing hover:shadow-healing" onClick={() => navigate('/start')}>
-              <Sparkles className="w-4 h-4 mr-2" />
+          {/* CTA Button */}
+          <div className="hidden md:flex items-center">
+            <Button 
+              className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white px-6 py-2 font-semibold"
+              onClick={() => navigate('/assessment')}
+            >
               Start Assessment
             </Button>
           </div>
@@ -55,6 +50,7 @@ const Navbar = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-white"
             >
               <Menu className="w-6 h-6" />
             </Button>
@@ -64,28 +60,21 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-card border border-border rounded-lg mt-2">
-              <a href="#home" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
-                Home
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black border border-gray-800 rounded-lg mt-2">
+              <a href="#features" className="block px-3 py-2 text-gray-300 hover:text-white transition-colors">
+                Features
               </a>
-              <a href="#modalities" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
-                Healing Modalities
+              <a href="#clients" className="block px-3 py-2 text-gray-300 hover:text-white transition-colors">
+                Clients
               </a>
-              <a href="#healers" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
-                Find Healers
-              </a>
-              <a href="#how-it-works" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
-                How It Works
-              </a>
-              <a href="#about" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
+              <a href="#about" className="block px-3 py-2 text-gray-300 hover:text-white transition-colors">
                 About
               </a>
-              <div className="px-3 py-2 space-y-2">
-                <Button variant="ghost" className="w-full" onClick={() => navigate('/assessment/results')}>
-                  View Results
-                </Button>
-                <Button className="w-full bg-gradient-healing" onClick={() => navigate('/start')}>
-                  <Sparkles className="w-4 h-4 mr-2" />
+              <div className="px-3 py-2">
+                <Button 
+                  className="w-full bg-gradient-to-r from-green-500 to-blue-500 text-white"
+                  onClick={() => navigate('/assessment')}
+                >
                   Start Assessment
                 </Button>
               </div>
