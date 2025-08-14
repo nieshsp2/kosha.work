@@ -30,9 +30,18 @@ const Question = () => {
     document.title = `Question ${indexNum} | HS Assessment`;
   }, [indexNum]);
 
+  // Ensure selected state is reset when question changes
+  useEffect(() => {
+    setSelected(null);
+  }, [indexNum]);
+
   useEffect(() => {
     const load = async () => {
       try {
+        // Clear previous selection immediately when loading new question
+        setSelected(null);
+        setAssessment(null);
+        
         // Load question and options from Supabase
         const { data: q, error: qError } = await supabase
           .from("HS_questions")
@@ -67,10 +76,6 @@ const Question = () => {
         }
 
         setOptions(opts || []);
-
-        // Clear previous selection when loading new question
-        setSelected(null);
-        setAssessment(null);
       } catch (error) {
         console.error("Error in load function:", error);
         toast({ title: "Error", description: "Failed to load question data", variant: "destructive" });
@@ -187,6 +192,14 @@ const Question = () => {
               style={{ width: `${progressPct}%` }}
             ></div>
           </div>
+          {busy && (
+            <div className="flex justify-center mt-2">
+              <div className="flex items-center gap-2 text-blue-600 text-xs">
+                <div className="w-3 h-3 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                <span>Processing...</span>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Category Header - Show when starting a new category */}
@@ -207,7 +220,20 @@ const Question = () => {
         )}
 
         {/* Main Question Card */}
-        <Card className="bg-white border border-gray-200 shadow-lg">
+        <Card className="bg-white border border-gray-200 shadow-lg relative">
+          {busy && (
+            <div className="absolute inset-0 bg-white/80 backdrop-blur-sm rounded-lg z-10 flex items-center justify-center">
+              <div className="text-center">
+                <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+                <p className="text-gray-700 font-medium">
+                  {isLast ? "Completing assessment..." : "Saving answer..."}
+                </p>
+                <p className="text-gray-500 text-sm">
+                  {isLast ? "Please wait while we process your results" : "Please wait while we save to the database"}
+                </p>
+              </div>
+            </div>
+          )}
           <CardContent className="p-4">
 
             {/* Question Icon */}
@@ -236,9 +262,13 @@ const Question = () => {
 
             {/* Select Dropdown */}
             <div className="mb-4">
-              <Select value={selected ?? undefined} onValueChange={setSelected}>
+              <Select 
+                key={`question-${indexNum}`} 
+                value={selected || ""} 
+                onValueChange={setSelected}
+              >
                 <SelectTrigger className="w-full h-10 text-sm bg-white border-2 border-gray-300 hover:border-blue-500 focus:border-blue-500 text-gray-900 rounded-lg shadow-sm">
-                  <SelectValue placeholder="select an option" className="text-gray-500" />
+                  <SelectValue placeholder="Select an option" className="text-gray-500" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border border-gray-200 shadow-xl rounded-lg max-h-48 overflow-y-auto">
                   {options.map((opt) => (
@@ -257,7 +287,7 @@ const Question = () => {
               <Button 
                 variant="outline" 
                 onClick={handlePrev} 
-                disabled={indexNum <= 1}
+                disabled={indexNum <= 1 || busy}
                 className="px-4 py-2 text-sm font-medium bg-white border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg shadow-sm"
               >
                 ← Previous
@@ -268,7 +298,14 @@ const Question = () => {
                 onClick={handleNext} 
                 disabled={busy || !selected}
               >
-                {isLast ? "Complete" : "Next"} →
+                {busy ? (
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <span>{isLast ? "Completing..." : "Saving..."}</span>
+                  </div>
+                ) : (
+                  <>{isLast ? "Complete" : "Next"} →</>
+                )}
               </Button>
             </div>
           </CardContent>

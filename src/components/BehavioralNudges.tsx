@@ -33,19 +33,19 @@ const BehavioralNudges: React.FC<BehavioralNudgesProps> = ({ nudges, onNudgeComp
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case 'health': return 'bg-green-100 text-green-800 border-green-200';
-      case 'wealth': return 'bg-blue-100 text-blue-800 border-blue-200';
-      case 'relationships': return 'bg-purple-100 text-purple-800 border-purple-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'health': return '!bg-green-500 !text-white !border-green-600 !font-semibold px-3 py-1 shadow-md';
+      case 'wealth': return '!bg-blue-500 !text-white !border-blue-600 !font-semibold px-3 py-1 shadow-md';
+      case 'relationships': return '!bg-purple-500 !text-white !border-purple-600 !font-semibold px-3 py-1 shadow-md';
+      default: return '!bg-gray-500 !text-white !border-gray-600 !font-semibold px-3 py-1 shadow-md';
     }
   };
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'micro-habit': return 'bg-orange-100 text-orange-800 border-orange-200';
-      case 'macro-change': return 'bg-indigo-100 text-indigo-800 border-indigo-200';
-      case 'strategic-planning': return 'bg-pink-100 text-pink-800 border-pink-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'micro-habit': return '!bg-orange-500 !text-white !border-orange-600 !font-semibold px-3 py-1 shadow-md';
+      case 'macro-change': return '!bg-indigo-500 !text-white !border-indigo-600 !font-semibold px-3 py-1 shadow-md';
+      case 'strategic-planning': return '!bg-pink-500 !text-white !border-pink-600 !font-semibold px-3 py-1 shadow-md';
+      default: return '!bg-gray-500 !text-white !border-gray-600 !font-semibold px-3 py-1 shadow-md';
     }
   };
 
@@ -61,11 +61,11 @@ const BehavioralNudges: React.FC<BehavioralNudgesProps> = ({ nudges, onNudgeComp
 
   const getPrincipleColor = (principle: string) => {
     switch (principle) {
-      case 'loss-aversion': return 'bg-red-100 text-red-800 border-red-200';
-      case 'social-proof': return 'bg-blue-100 text-blue-800 border-blue-200';
-      case 'commitment-device': return 'bg-green-100 text-green-800 border-green-200';
-      case 'fresh-start': return 'bg-purple-100 text-purple-800 border-purple-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'loss-aversion': return '!bg-red-500 !text-white !border-red-600 !font-semibold px-3 py-1 shadow-md';
+      case 'social-proof': return '!bg-blue-500 !text-white !border-blue-600 !font-semibold px-3 py-1 shadow-md';
+      case 'commitment-device': return '!bg-green-500 !text-white !border-green-600 !font-semibold px-3 py-1 shadow-md';
+      case 'fresh-start': return '!bg-purple-500 !text-white !border-purple-600 !font-semibold px-3 py-1 shadow-md';
+      default: return '!bg-gray-500 !text-white !border-gray-600 !font-semibold px-3 py-1 shadow-md';
     }
   };
 
@@ -81,12 +81,12 @@ const BehavioralNudges: React.FC<BehavioralNudgesProps> = ({ nudges, onNudgeComp
 
   if (nudges.length === 0) {
     return (
-      <Card className="max-w-4xl mx-auto">
+      <Card className="max-w-4xl mx-auto bg-white border border-gray-200 shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-center text-gray-600">
+          <CardTitle className="text-2xl font-bold text-center text-gray-900">
             🎯 Fallback Recommendations
           </CardTitle>
-          <CardDescription className="text-center">
+          <CardDescription className="text-center text-gray-600">
             AI recommendations are not available. Here are some general wellbeing tips to get you started.
           </CardDescription>
         </CardHeader>
@@ -119,7 +119,7 @@ const BehavioralNudges: React.FC<BehavioralNudgesProps> = ({ nudges, onNudgeComp
   return (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+        <h2 className="!text-3xl !font-bold !text-gray-900 mb-4">
           AI-Powered Behavioral Nudging
         </h2>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -173,9 +173,9 @@ const BehavioralNudges: React.FC<BehavioralNudgesProps> = ({ nudges, onNudgeComp
 
         return (
           <div key={category} className="space-y-4">
-            <h3 className="text-2xl font-bold text-center capitalize mb-6">
-              {category} Nudges
-            </h3>
+                    <h3 className="!text-2xl !font-bold !text-gray-900 text-center capitalize mb-6">
+          {category} Nudges
+        </h3>
             
             <div className="grid gap-4 max-w-4xl mx-auto">
               {categoryNudges.map(nudge => {
@@ -184,7 +184,7 @@ const BehavioralNudges: React.FC<BehavioralNudgesProps> = ({ nudges, onNudgeComp
                 return (
                   <Card 
                     key={nudge.id} 
-                    className={`transition-all duration-300 hover:shadow-lg ${
+                    className={`transition-all duration-300 hover:shadow-lg border border-gray-200 ${
                       isCompleted ? 'bg-green-50 border-green-200' : 'bg-white hover:bg-gray-50'
                     }`}
                   >
@@ -205,10 +205,10 @@ const BehavioralNudges: React.FC<BehavioralNudgesProps> = ({ nudges, onNudgeComp
                               </div>
                             </Badge>
                           </div>
-                          <CardTitle className="text-lg font-semibold mb-2">
+                          <CardTitle className="!text-lg !font-semibold !text-gray-900 mb-2">
                             {nudge.title}
                           </CardTitle>
-                          <CardDescription className="text-gray-600 mb-3">
+                          <CardDescription className="!text-gray-700 mb-3">
                             {nudge.description}
                           </CardDescription>
                         </div>

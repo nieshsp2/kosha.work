@@ -53,6 +53,11 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				brand: {
+					wellness: 'hsl(var(--brand-wellness))',
+					wealth: 'hsl(var(--brand-wealth))',
+					relationships: 'hsl(var(--brand-relationships))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -68,15 +73,6 @@ export default {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
-			},
-			backgroundImage: {
-				'gradient-kosha': 'var(--gradient-kosha)',
-				'gradient-kosha-alt': 'var(--gradient-kosha-alt)',
-				'gradient-dark': 'var(--gradient-dark)'
-			},
-			boxShadow: {
-				'kosha': 'var(--shadow-kosha)',
-				'glow': 'var(--shadow-glow)'
 			},
 			keyframes: {
 				'accordion-down': {
@@ -95,20 +91,46 @@ export default {
 						height: '0'
 					}
 				},
-				'float': {
-					'0%, 100%': { transform: 'translateY(0px)' },
-					'50%': { transform: 'translateY(-10px)' }
+				'glow-pulse': {
+					'0%, 100%': { 
+						boxShadow: '0 0 20px hsl(var(--primary-glow) / 0.3)' 
+					},
+					'50%': { 
+						boxShadow: '0 0 40px hsl(var(--primary-glow) / 0.6)' 
+					}
 				},
-				'pulse-glow': {
-					'0%, 100%': { boxShadow: '0 0 20px hsl(var(--primary) / 0.3)' },
-					'50%': { boxShadow: '0 0 40px hsl(var(--primary) / 0.6)' }
+				'float': {
+					'0%, 100%': { 
+						transform: 'translateY(0px)' 
+					},
+					'50%': { 
+						transform: 'translateY(-10px)' 
+					}
+				},
+				'fade-in-up': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(20px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
+				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
 				'float': 'float 3s ease-in-out infinite',
-				'pulse-glow': 'pulse-glow 2s ease-in-out infinite'
+				'fade-in-up': 'fade-in-up 0.6s ease-out'
+			},
+			backgroundImage: {
+				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-wellness': 'var(--gradient-wellness)',
+				'gradient-wealth': 'var(--gradient-wealth)',
+				'gradient-relationships': 'var(--gradient-relationships)',
+				'gradient-dark': 'var(--gradient-dark)'
 			}
 		}
 	},
