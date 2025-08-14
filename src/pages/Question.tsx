@@ -172,18 +172,18 @@ const Question = () => {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 text-gray-900 flex items-center justify-center p-4">
+    <main className="min-h-screen bg-gray-50 text-gray-900 flex items-center justify-center p-3">
       <div className="w-full max-w-2xl">
         {/* Progress Bar */}
-        <div className="mb-6">
-          <div className="flex justify-center mb-3">
-            <div className="bg-white border border-gray-200 rounded-full px-4 py-2 shadow-sm">
-              <span className="text-gray-600 font-medium text-sm">Question {indexNum} of {total}</span>
+        <div className="mb-4">
+          <div className="flex justify-center mb-2">
+            <div className="bg-white border border-gray-200 rounded-full px-3 py-1 shadow-sm">
+              <span className="text-gray-600 font-medium text-xs">Question {indexNum} of {total}</span>
             </div>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-3">
+          <div className="w-full bg-gray-200 rounded-full h-2">
             <div 
-              className="bg-gradient-to-r from-blue-500 to-blue-600 h-3 rounded-full transition-all duration-300 shadow-sm" 
+              className="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all duration-300" 
               style={{ width: `${progressPct}%` }}
             ></div>
           </div>
@@ -191,15 +191,15 @@ const Question = () => {
 
         {/* Category Header - Show when starting a new category */}
         {isFirstQuestionInCategory && currentCategoryInfo && (
-          <Card className="bg-white border border-gray-200 shadow-sm mb-6">
-            <CardContent className="p-4 md:p-6 text-center">
-              <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+          <Card className="bg-white border border-gray-200 shadow-sm mb-4">
+            <CardContent className="p-3 text-center">
+              <h2 className="text-lg font-bold text-gray-900 mb-1">
                 {currentCategoryInfo.title}
               </h2>
-              <p className="text-blue-600 text-base md:text-lg font-medium mb-3">
+              <p className="text-blue-600 text-sm font-medium mb-2">
                 {currentCategoryInfo.subtitle}
               </p>
-              <p className="text-gray-600 text-base md:text-lg italic max-w-lg mx-auto">
+              <p className="text-gray-600 text-sm italic">
                 {currentCategoryInfo.description}
               </p>
             </CardContent>
@@ -208,42 +208,42 @@ const Question = () => {
 
         {/* Main Question Card */}
         <Card className="bg-white border border-gray-200 shadow-lg">
-          <CardContent className="p-6 md:p-8">
+          <CardContent className="p-4">
 
             {/* Question Icon */}
-            <div className="flex justify-center mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-md">
-                <span className="text-2xl">💧</span>
+            <div className="flex justify-center mb-3">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-md">
+                <span className="text-lg">💧</span>
               </div>
             </div>
 
             {/* Question Title and Content */}
-            <div className="text-center mb-6">
-              <h2 className="text-lg md:text-xl font-semibold text-gray-700 mb-4">
+            <div className="text-center mb-4">
+              <h2 className="text-sm font-semibold text-gray-700 mb-2">
                 {question.title}
               </h2>
               {question.description && (
-                <p className="text-base md:text-lg text-gray-600 mb-6 italic max-w-xl mx-auto bg-blue-50 px-4 py-3 rounded-lg border-l-4 border-blue-400">
+                <p className="text-sm text-gray-600 mb-3 italic bg-blue-50 px-3 py-2 rounded-lg border-l-4 border-blue-400">
                   {question.description}
                 </p>
               )}
               {question.question_text && (
-                <h1 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight max-w-2xl mx-auto">
+                <h1 className="text-lg md:text-xl font-bold text-gray-900 leading-tight">
                   {question.question_text}
                 </h1>
               )}
             </div>
 
             {/* Select Dropdown */}
-            <div className="mb-8">
+            <div className="mb-4">
               <Select value={selected ?? undefined} onValueChange={setSelected}>
-                <SelectTrigger className="w-full h-12 md:h-14 text-base md:text-lg bg-white border-2 border-gray-300 hover:border-blue-500 focus:border-blue-500 text-gray-900 rounded-lg shadow-sm">
+                <SelectTrigger className="w-full h-10 text-sm bg-white border-2 border-gray-300 hover:border-blue-500 focus:border-blue-500 text-gray-900 rounded-lg shadow-sm">
                   <SelectValue placeholder="select an option" className="text-gray-500" />
                 </SelectTrigger>
-                <SelectContent className="bg-white border border-gray-200 shadow-xl rounded-lg max-h-64 overflow-y-auto">
+                <SelectContent className="bg-white border border-gray-200 shadow-xl rounded-lg max-h-48 overflow-y-auto">
                   {options.map((opt) => (
-                    <SelectItem key={opt.id} value={opt.id} className="py-4 px-6 hover:bg-blue-50 cursor-pointer text-gray-900 border-b border-gray-100 last:border-b-0">
-                      <div className="font-medium text-base">
+                    <SelectItem key={opt.id} value={opt.id} className="py-2 px-4 hover:bg-blue-50 cursor-pointer text-gray-900 text-sm">
+                      <div className="font-medium">
                         {opt.label}
                       </div>
                     </SelectItem>
@@ -258,13 +258,13 @@ const Question = () => {
                 variant="outline" 
                 onClick={handlePrev} 
                 disabled={indexNum <= 1}
-                className="px-6 md:px-8 py-3 text-base font-medium bg-white border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg shadow-sm"
+                className="px-4 py-2 text-sm font-medium bg-white border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg shadow-sm"
               >
                 ← Previous
               </Button>
               
               <Button 
-                className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 md:px-8 py-3 text-base font-medium shadow-md hover:shadow-lg transition-all duration-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed" 
+                className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 py-2 text-sm font-medium shadow-md hover:shadow-lg transition-all duration-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed" 
                 onClick={handleNext} 
                 disabled={busy || !selected}
               >
