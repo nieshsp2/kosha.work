@@ -2,148 +2,116 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* HWR Design System - Modern, Engaging, Professional */
 
 @layer base {
   :root {
-    /* Kosha Brand Colors */
-    --background: 180 100% 99%;
-    --foreground: 180 20% 15%;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 180 20% 15%;
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 180 20% 15%;
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 98%;
 
-    /* Kosha Primary - Green */
-    --primary: 150 60% 50%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 150 80% 60%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 142 86% 56%;
 
-    /* Kosha Secondary - Teal */
-    --secondary: 180 45% 85%;
-    --secondary-foreground: 180 60% 25%;
+    --secondary: 240 4.8% 15.9%;
+    --secondary-foreground: 0 0% 98%;
 
-    /* Kosha Accent - Blue-Green */
-    --accent: 170 50% 45%;
-    --accent-foreground: 0 0% 100%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
 
-    --muted: 180 20% 95%;
-    --muted-foreground: 180 10% 50%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 240 10% 3.9%;
 
-    --destructive: 0 75% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 180 15% 88%;
-    --input: 180 15% 88%;
-    --ring: 150 60% 50%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 142 76% 36%;
 
-    /* Kosha Gradients */
-    --gradient-kosha: linear-gradient(135deg, hsl(150 60% 35%), hsl(170 50% 45%));
-    --gradient-kosha-alt: linear-gradient(90deg, hsl(150 60% 35%), hsl(180 60% 40%));
-    --gradient-dark: linear-gradient(135deg, hsl(180 20% 15%), hsl(150 30% 18%));
+    --radius: 1rem;
 
-    /* Shadows */
-    --shadow-kosha: 0 10px 40px -10px hsl(150 60% 35% / 0.3);
-    --shadow-glow: 0 0 30px hsl(150 80% 60% / 0.4);
-
+    /* HWR Brand Colors */
+    --brand-wellness: 142 76% 36%;
+    --brand-wealth: 45 93% 47%;
+    --brand-relationships: 315 83% 60%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(142 76% 36%), hsl(45 93% 47%), hsl(315 83% 60%));
+    --gradient-wellness: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 86% 56%));
+    --gradient-wealth: linear-gradient(135deg, hsl(45 93% 47%), hsl(45 93% 67%));
+    --gradient-relationships: linear-gradient(135deg, hsl(315 83% 60%), hsl(315 83% 80%));
+    --gradient-dark: linear-gradient(135deg, hsl(240 10% 3.9%), hsl(240 10% 6%));
+    
     /* Animations */
-    --transition-kosha: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --glow-effect: 0 0 40px hsl(var(--primary-glow) / 0.3);
 
-    --radius: 0.8rem;
+    --radius: 1rem;
 
-    /* Sidebar variables */
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 180 5.3% 26.1%;
-    --sidebar-primary: 180 5.9% 10%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 180 4.8% 95.9%;
-    --sidebar-accent-foreground: 180 5.9% 10%;
-    --sidebar-border: 180 13% 91%;
-    --sidebar-ring: 150 60% 50%;
-  }
 
-  /* Utility classes for Kosha gradients */
-  .bg-gradient-kosha {
-    background: var(--gradient-kosha);
-  }
+    --sidebar-accent: 240 4.8% 95.9%;
 
-  .bg-gradient-kosha-alt {
-    background: var(--gradient-kosha-alt);
-  }
+    --sidebar-accent-foreground: 240 5.9% 10%;
 
-  .bg-gradient-dark {
-    background: var(--gradient-dark);
-  }
+    --sidebar-border: 220 13% 91%;
 
-  .shadow-kosha {
-    box-shadow: var(--shadow-kosha);
-  }
-
-  .shadow-glow {
-    box-shadow: var(--shadow-glow);
-  }
-
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .animate-pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-  }
-
-  @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px var(--shadow-glow); }
-    50% { box-shadow: 0 0 40px var(--shadow-glow), 0 0 60px var(--shadow-glow); }
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 180 20% 12%;
-    --foreground: 150 20% 95%;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
 
-    --card: 180 20% 18%;
-    --card-foreground: 150 20% 95%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 180 20% 18%;
-    --popover-foreground: 150 20% 90%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 150 60% 50%;
-    --primary-foreground: 180 20% 8%;
-    --primary-glow: 150 80% 60%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary: 180 15% 20%;
-    --secondary-foreground: 150 20% 90%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
 
-    --accent: 170 50% 45%;
-    --accent-foreground: 180 20% 8%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --muted: 180 15% 18%;
-    --muted-foreground: 180 10% 60%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 75% 60%;
-    --destructive-foreground: 150 20% 90%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 180 15% 20%;
-    --input: 180 15% 20%;
-    --ring: 150 60% 50%;
-    --sidebar-background: 180 5.9% 10%;
-    --sidebar-foreground: 180 4.8% 95.9%;
-    --sidebar-primary: 150 60% 50%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 180 3.7% 15.9%;
-    --sidebar-accent-foreground: 180 4.8% 95.9%;
-    --sidebar-border: 180 3.7% 15.9%;
-    --sidebar-ring: 150 60% 50%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
+}
 
+@layer base {
   * {
     @apply border-border;
   }
