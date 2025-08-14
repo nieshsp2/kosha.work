@@ -173,14 +173,22 @@ const UserInfo = () => {
               <Label htmlFor="gender" className="text-base font-medium">
                 Gender *
               </Label>
-              <Input
-                id="gender"
-                placeholder="e.g., Female, Male, Non-binary, Prefer not to say"
+              <Select
                 value={formData.gender}
-                onChange={(e) => handleInputChange('gender', e.target.value)}
-                className="h-12 text-base"
+                onValueChange={(value) => handleInputChange('gender', value)}
                 required
-              />
+              >
+                <SelectTrigger className="h-10 md:h-12 text-sm md:text-base">
+                  <SelectValue placeholder="Select your gender" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="female">Female</SelectItem>
+                  <SelectItem value="male">Male</SelectItem>
+                  <SelectItem value="non-binary">Non-binary</SelectItem>
+                  <SelectItem value="prefer-not-to-say">Prefer not to say</SelectItem>
+                  <SelectItem value="other">Other</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
             {/* Location */}
