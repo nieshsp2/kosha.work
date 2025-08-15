@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 w-full bg-background/90 backdrop-blur-lg border-b border-border z-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative flex items-center h-16">
+        <div className="grid grid-cols-3 items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
             <button 
@@ -22,7 +22,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation - Centered */}
-          <div className="hidden md:flex items-center space-x-4 absolute left-1/2 transform -translate-x-1/2">
+          <div className="hidden md:flex items-center justify-center space-x-4">
             <a href="#solution" className="text-muted-foreground hover:text-foreground transition-colors">
               Solution
             </a>
@@ -36,15 +36,17 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden ml-auto">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-foreground"
-            >
-              <Menu className="w-6 h-6" />
-            </Button>
+          <div className="flex justify-end">
+            <div className="md:hidden">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-foreground"
+              >
+                <Menu className="w-6 h-6" />
+              </Button>
+            </div>
           </div>
         </div>
 
