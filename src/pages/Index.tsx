@@ -46,16 +46,24 @@ const Index = () => {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+          {/* Left section - Logo */}
           <div className="flex items-center gap-2">
             <KoshaLogo size="lg" />
           </div>
-          <div className="hidden md:flex items-center gap-6">
+          
+          {/* Center section - Navigation items */}
+          <div className="hidden md:flex items-center gap-6 absolute left-1/2 transform -translate-x-1/2">
             <a href="#solution" className="text-muted-foreground hover:text-foreground transition-colors">Solution</a>
             <a href="#advantage" className="text-muted-foreground hover:text-foreground transition-colors">Advantage</a>
             <Button variant="cta" size="sm" className="cursor-pointer hover:opacity-90 transition-opacity">
               <Heart className="mr-1 h-4 w-4" />
               Wellbeing Dashboard
             </Button>
+          </div>
+          
+          {/* Right section - Empty for balance */}
+          <div className="flex items-center gap-2">
+            <div className="w-20"></div>
           </div>
         </div>
       </nav>
@@ -79,9 +87,23 @@ const Index = () => {
             <span className="text-primary font-semibold"> 87% of the comprehensive employee wellbeing programs fail</span> due to poor or no outcome measurement and engagement.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center animate-fade-in-up px-4">
-            <Button variant="hero" size="lg" className="text-base md:text-lg px-6 md:px-8 py-4 md:py-6 w-full sm:w-auto" onClick={() => window.open('/user-info', '_self')}>
-              <Database className="mr-2 h-4 w-4 md:h-5 md:w-5" />
-              See Platform Demo
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="text-base md:text-lg px-6 md:px-8 py-4 md:py-6 w-full sm:w-auto relative overflow-hidden group shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 animate-pulse-slow hover:animate-none" 
+              onClick={() => window.open('/user-info', '_self')}
+            >
+              {/* Animated background effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+                     {/* Shimmer effect */}
+       <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-2000 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+              
+              {/* Button content */}
+              <div className="relative z-10 flex items-center">
+                <Target className="mr-2 h-4 w-4 md:h-5 md:w-5 animate-bounce" />
+                <span className="font-bold">Take Your Holistic Assessment</span>
+              </div>
             </Button>
           </div>
           
@@ -217,7 +239,7 @@ const Index = () => {
               <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                 <Button variant="cta" size="lg" className="text-sm md:text-base px-4 md:px-6 py-2 md:py-3" onClick={() => window.open('/user-info', '_self')}>
                   <Database className="mr-2 h-4 w-4 md:h-5 md:w-5" />
-                  Platform Demo
+                  Your Holistic Wellbeing Report
                 </Button>
                 <Button variant="outline" size="lg" className="text-sm md:text-base px-4 md:px-6 py-2 md:py-3">
                   <Award className="mr-2 h-4 w-4 md:h-5 md:w-5" />
@@ -502,7 +524,7 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center px-4">
             <Button variant="secondary" size="lg" className="text-base md:text-lg px-6 md:px-8 py-4 md:py-6 bg-white text-primary hover:bg-white/90 w-full sm:w-auto" onClick={() => window.open('/user-info', '_self')}>
               <Database className="mr-2 h-4 w-4 md:h-5 md:w-5" />
-              View Platform Demo
+              View Your Holistic Wellbeing Report
             </Button>
           </div>
         </div>
