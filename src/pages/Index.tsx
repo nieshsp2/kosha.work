@@ -207,7 +207,7 @@ const Index = () => {
                   <CheckCircle className="h-5 w-5 md:h-6 md:w-6 text-brand-wealth mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold text-sm md:text-base">Loans Risk Assessment</h4>
-                    <p className="text-xs md:text-sm text-muted-foreground">Behavioral insights for enhanced KYC 2.0 and to provide customised finical services</p>
+                    <p className="text-xs md:text-sm text-muted-foreground">Behavioral insights for enhanced KYC 2.0 and to provide customised financial services</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
